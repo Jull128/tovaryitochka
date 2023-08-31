@@ -31,7 +31,7 @@ const CATALOG = [
     newPrice: 494,
     availability: 2,
     color: "",
-    size: 56,
+    size: "",
     sortingCenter: "OOO Вайлдберриз",
     check: false,
   },
