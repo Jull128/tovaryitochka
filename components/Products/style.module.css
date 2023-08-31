@@ -1,0 +1,35 @@
+.products__list {
+  width: 891px;
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  display: flex;
+  gap: 16px;
+}
+
+.products__item {
+  width: 891px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  align-self: stretch;
+}
+
+.item__img {
+  width: 72px;
+  height: 96px;
+  border-radius: 8px;
+  background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.05) 0%,
+      rgba(0, 0, 0, 0.05) 100%
+    ),
+    url(<path-to-image>), lightgray 50% / cover no-repeat;
+}
+
+.item__description {
+  display: flex;
+  flex-direction: column;
+}
