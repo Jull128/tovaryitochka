@@ -4,6 +4,7 @@ class Products {
       return `
       <li key=${el.id} class="products__item">
       <div class="item">
+      <input type='checkbox'>
       <img src="${el.img}" class="item__img" />
         <div class="item__description">
       <span class="item__name">${el.name}</span>
