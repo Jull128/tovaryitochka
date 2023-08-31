@@ -20,9 +20,27 @@
   align-self: stretch;
 }
 
+.line {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.1);
+  margin-top: 18.5px;
+}
+
 .item__checkbox_container {
   display: flex;
   align-items: center;
+}
+
+.item__checkboxAll_container {
+  display: flex;
+  align-items: center;
+  margin-top: 24.5px;
+}
+
+.item__checkboxAll_container > p {
+  margin: 0;
+  padding-left: 11px;
 }
 
 .item__checkbox {

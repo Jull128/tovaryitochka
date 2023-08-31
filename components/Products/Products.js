@@ -35,8 +35,13 @@ class Products {
     });
 
     const html = `
-    <input type='checkbox' class="item__checkboxAll" id='checkAll>
-    <label for='checkAll'>Выбрать все</label>
+    <div class='item__checkboxAll_container'>
+    <input type='checkbox' class="item__checkbox" id='checkAll'>
+    <label for='checkAll'></label>
+    <p>Выбрать все</p>
+
+    </div>
+    <div class="line"></div>
         <ul class='products__list'>
         ${htmlCatalog}
         </ul>
