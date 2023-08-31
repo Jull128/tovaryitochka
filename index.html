@@ -7,26 +7,26 @@
     <title>Товары и точка</title>
   </head>
   <body>
-    <script src="js/index.js"></script>
     <div class="wrapper">
       <header class="header">
         <div class="header__container">
           <div class="nav-element">
             <button class="nav-element__burger">
-              <img src="icons/burger.svg" alt="" />
+              <img src="img/icons/burger.svg" alt="" />
             </button>
             <span class="nav-element__title">ТОВАРЫ &#10; И ТОЧКА</span>
           </div>
           <div class="search__container">
-            <input class="search" type="text" />
+            <input class="search" placeholder="Я ищу..." type="text" />
+            <button class="search__btn"></button>
           </div>
           <div class="navbar">
             <div class="navbar__item">
-              <img src="icons/profile.svg" alt="" />
+              <img src="img/icons/profile.svg" alt="" />
               <p>Профиль</p>
             </div>
             <div class="navbar__item">
-              <img src="icons/basket.svg" alt="" />
+              <img src="img/icons/basket.svg" alt="" />
               <p>Корзина</p>
             </div>
           </div>
@@ -37,5 +37,12 @@
       </main>
       <footer></footer>
     </div>
+    <script src="js/index.js"></script>
+    <!-- Products-->
+    <script src="../tovaryitochka/components/Products/Products.js"></script>
+    <link
+      rel="stylesheet"
+      href="../tovaryitochka/components/Products/style.modele.css"
+    />
   </body>
 </html>
