@@ -37,7 +37,7 @@ class Products {
               </div>
             </div>
             <div class='counter' data-counter>
-              <button class="counter__btn" onclick='decrement(${id})'>-</button>
+              <button class="counter__btn" onclick='decrement(${id})'>−</button>
               <input type='text' class="counter__input" disabled value='${cart}'/>
               <button class="counter__btn" onclick='increment(${id})'>+</button>
             </div>
