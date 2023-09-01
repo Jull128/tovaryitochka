@@ -1,7 +1,9 @@
 class Products {
   render() {
+    const productsStore = localStorageUtil.getProducts();
     let htmlCatalog = "";
-
+    localStorage.setItem("products", JSON.stringify(CATALOG));
+    console.log(productsStore);
     CATALOG.forEach(
       ({
         id,
@@ -68,29 +70,3 @@ class Products {
 
 const productsPage = new Products();
 productsPage.render();
-
-const increment = (id) => {
-  let selected = id;
-  let search = CATALOG.find((x) => x.id === selected.id);
-  if (search === undefined) {
-    CATALOG.push({
-      id: selected.id,
-      cart: 1,
-    });
-  } else if (search.cart < search.availability) {
-    search.cart += 1;
-  }
-  productsPage.render();
-  console.log(CATALOG);
-};
-
-const decrement = (id) => {
-  let selected = id;
-  let search = CATALOG.find((x) => x.id === selected.id);
-  if (search.cart === 1) return;
-  else {
-    search.cart -= 1;
-  }
-  productsPage.render();
-  console.log(CATALOG);
-};

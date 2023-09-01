@@ -1,7 +1,14 @@
-// const increment = (id) => {
-//   console.log(id);
-// };
+class LocalStorageUtil {
+  constructor() {
+    this.keyName = "products";
+  }
+  getProducts() {
+    const productsLocalStorage = localStorage.getItem(this.keyName, CATALOG);
+    if (productsLocalStorage !== null) {
+      return JSON.parse(productsLocalStorage);
+    }
+    return [CATALOG];
+  }
+}
 
-// const decrement = () => {
-//   console.log("decrement");
-// };
+const localStorageUtil = new LocalStorageUtil();
