@@ -33,11 +33,12 @@ body {
   position: sticky;
   background: var(--system-violet, #6725a8);
   flex: 0 0 auto;
-  padding: 16px 3px 32px 24px;
+  padding: 16px 3px 40px 24px;
 }
 
 .header__container {
   max-width: 1400px;
+  height: 56px;
   display: flex;
   align-items: center;
   gap: 32px;
@@ -56,10 +57,6 @@ body {
   position: absolute;
   bottom: -1px;
   left: 0;
-}
-
-.navbar {
-  padding-right: 17px;
 }
 
 .nav-element {
@@ -147,12 +144,15 @@ body {
 .navbar {
   display: flex;
   gap: 40px;
+  padding-right: 17px;
 }
 
 .navbar__item {
+  position: relative;
   height: 56px;
   display: flex;
   flex-direction: column;
+  gap: 7px;
 }
 .navbar__item > img {
   height: 28px;
@@ -161,6 +161,34 @@ body {
 .navbar__item > p {
   margin: 0;
   color: var(--system-white, #fff);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+}
+
+.cartAmount {
+  position: absolute;
+  top: -4.5px;
+  left: 33px;
+  display: inline-flex;
+  height: 16px;
+  width: 12px;
+  transform: rotate(0.074deg);
+  padding: 0px 2px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 16px;
+  background: var(--system-red, #f55123);
+  color: var(--system-white, #fff);
+  text-align: center;
+  font-family: Segoe UI;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 18px;
 }
 
 main {

@@ -5,9 +5,10 @@ const increment = (id) => {
     search.cart += 1;
   } else return "";
 
-  console.log(JSON.parse(localStorage.getItem("products", search)));
+  // localStorage.setItem("data", JSON.stringify(search));
 
-  productsPage.render();
+  update(selected.id);
+  calculation();
 };
 
 const decrement = (id) => {
@@ -17,6 +18,18 @@ const decrement = (id) => {
   else {
     search.cart -= 1;
   }
-  productsPage.render();
-  console.log(CATALOG);
+  update(selected.id);
 };
+
+let update = (id) => {
+  let search = CATALOG.find((x) => x.id === id);
+  document.getElementById(id).innerHTML = search.cart;
+};
+
+let calculation = (id) => {
+  let cartIcon = document.getElementById("cartAmount");
+  let cartLength = Object.keys(CATALOG.map((x) => x.cart)).length;
+  cartIcon.innerHTML = cartLength;
+  console.log(cartLength.length);
+};
+calculation();
