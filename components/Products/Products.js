@@ -2,7 +2,7 @@ class Products {
   render() {
     let htmlCatalog = "";
 
-    CATALOG.forEach(
+    basket.forEach(
       ({
         id,
         name,
@@ -13,13 +13,14 @@ class Products {
         color,
         size,
         sortingCenter,
+        availability,
       }) => {
         htmlCatalog += `
           <li key='${id}' class="products__item">
             <div class="item">
               <div style='display: flex; justify-content:center; gap: 12px'>
                 <div class='item__checkbox_container'>
-                <input type='checkbox' name='check' class="item__checkbox" id='check${id}'/>
+                <input type='checkbox' name='check' class="item__checkbox" onclick='isCheck(${id})' id='check${id}'/>
                 <label for='check${id}'></label>
                 </div>
                  <img src="${img}" class="item__img" />
@@ -27,8 +28,8 @@ class Products {
               <div class="item__description">
                 <span class="item__name">${name}</span>
                 <div class="item__properties">
-                  ${color ? `<span> Размер: ${color}</span>` : ""}
-                  ${size ? `<span> Размер: ${size}</span>` : ""}
+                  ${color ? `<span>Цвет: ${color}</span>` : ""}
+                  ${size ? `<span>Размер: ${size}</span>` : ""}
                 </div>
                 <div class="item__sortingCenter">
                   <p>Коледино WB</p>
@@ -36,18 +37,35 @@ class Products {
                 </div>
               </div>
             </div>
-            <div class='counter' data-counter>
-              <button class="counter__btn" onclick='decrement(${id})'>−</button>
-              <div class="counter__input" id='${id}'>${cart}</div>
-              <button class="counter__btn" onclick='increment(${id})'>+</button>
-            </div>
-            <div class='item__price'>
-              <p class="item__newPrice">${newPrice} сом</p>
-                <div class="item__oldPrice_container">
-                <div class='item__oldPrice_line'></div>
-                <p class="item__oldPrice">${oldPrice} сом</p>
-                
+            <div class="countainer__counter_price">
+<div style='display:flex; flex-direction:column; gap:8px'>
+              <div class='counter' data-counter>
+                <button class="counter__btn" onclick='decrement(${id})'>−</button>
+                <div class="counter__input" id='${id}'>${cart}</div>
+                <button class="counter__btn" onclick='increment(${id})'>+</button>
+              </div>
+              ${
+                availability - cart < 5
+                  ? `<p class='countainer__counter_availability'>
+                   Осталось ${availability - cart} шт.</p>`
+                  : ""
+              }
+              <div class='btn_lovely_remove'>
+              <button class='heart'></button>
+              <button class='trash'></button>
+              </div>
+              </div>
+              <div class='item__price'>
+                <div style='display: flex; align-items: baseline; position: relative;
+                top: -4px;'>
+                  ${countPrice(newPrice, cart)}
+                  <h4>&nbsp;сом</h4>
                 </div>
+                  <div class="item__oldPrice_container">
+                  <div class='item__oldPrice_line'></div>
+                  <p class="item__oldPrice">${oldPrice * cart} сом</p>
+              </div>
+            </div>
             </div>
         </li>
         `;
@@ -72,10 +90,3 @@ class Products {
 
 const productsPage = new Products();
 productsPage.render();
-
-function toggle(source) {
-  checkboxes = document.getElementsByName("check");
-  for (var i = 0, n = checkboxes.length; i < n; i++) {
-    checkboxes[i].checked = source.checked;
-  }
-}

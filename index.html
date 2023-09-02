@@ -27,24 +27,32 @@
             </div>
             <div class="navbar__item">
               <img src="img/icons/basket.svg" alt="" />
-              <div id="cartAmount" class="cartAmount">0</div>
+              <div id="cartAmount" class="cartAmount"></div>
               <p>Корзина</p>
             </div>
           </div>
         </div>
       </header>
       <main>
-        <h1 class="main__title">Корзина</h1>
-        <div id="products"></div>
+        <div class="main__container">
+          <div>
+            <h1 class="main__title">Корзина</h1>
+            <div id="products"></div>
+          </div>
+          <div id="order"></div>
+        </div>
       </main>
       <footer></footer>
     </div>
+
     <script src="constants/constants.js"></script>
     <script src="constants/root.js"></script>
     <script src="js/index.js"></script>
     <script src="utils/localStorageUtil.js"></script>
     <!-- Products-->
     <script src="components/Products/products.js"></script>
-    <link rel="stylesheet" href="components/Products/style1.css" />
+    <link rel="stylesheet" href="components/Products/products.css" />
+    <script src="components/Order/Order.js"></script>
+    <link rel="stylesheet" href="components/Order/order.css" />
   </body>
 </html>

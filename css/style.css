@@ -8,6 +8,39 @@ h1 {
   margin: 0;
 }
 
+h2 {
+  font-family: Segoe UI;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 32px; /* 133.333% */
+  letter-spacing: -0.24px;
+  margin: 0;
+}
+
+h3 {
+  font-family: Segoe UI;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 28px; /* 140% */
+  letter-spacing: -0.2px;
+  margin: 0;
+}
+
+h4 {
+  font-family: Segoe UI;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px; /* 150% */
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
 ::after,
 ::before {
   box-sizing: border-box;
@@ -32,8 +65,7 @@ body {
 .header {
   position: sticky;
   background: var(--system-violet, #6725a8);
-  flex: 0 0 auto;
-  padding: 16px 3px 40px 24px;
+  margin: 0;
 }
 
 .header__container {
@@ -43,8 +75,9 @@ body {
   align-items: center;
   gap: 32px;
   align-self: stretch;
-  justify-content: space-between;
+  justify-content: center;
   margin: auto;
+  padding: 16px 3px 40px 24px;
 }
 
 .header::after {
@@ -98,6 +131,7 @@ body {
 .search__container {
   position: relative;
   width: 100%;
+  max-width: 970px;
 }
 
 .search {
@@ -125,7 +159,7 @@ body {
 .search__btn {
   position: absolute;
   top: 11px;
-  right: 16px;
+  right: 19px;
   display: block;
   width: 24px;
   height: 24px;
@@ -142,6 +176,7 @@ body {
 }
 
 .navbar {
+  width: 152px;
   display: flex;
   gap: 40px;
   padding-right: 17px;
@@ -192,9 +227,19 @@ body {
 }
 
 main {
+  max-width: 1400px;
   flex: 1 0 auto;
+  width: 100%;
   position: relative;
-  padding: 0 24px 0 24px;
+  margin: auto;
+}
+
+.main__container {
+  display: flex;
+  max-width: 1400px;
+  margin: auto;
+  gap: 32px;
+  padding: 10px 24px 0 24px;
 }
 
 .main__title {
