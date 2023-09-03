@@ -1,0 +1,27 @@
+.delivery__container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.delivery__section {
+  display: flex;
+  width: 100%;
+  padding: 16px 24px 24px 24px;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  align-self: stretch;
+  border-radius: 16px;
+  background: var(--background-white, #fff);
+}
+
+.delivery__block {
+  width: 100%;
+}
+
+.delivery__line {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}

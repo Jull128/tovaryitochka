@@ -234,6 +234,10 @@ main {
   margin: auto;
 }
 
+.main_section > div {
+  margin-bottom: 40px;
+}
+
 .main__container {
   display: flex;
   max-width: 1400px;

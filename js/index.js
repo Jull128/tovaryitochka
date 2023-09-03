@@ -17,6 +17,7 @@ const increment = (id) => {
 
   update(selected.id);
   productsPage.render();
+  isChecked();
   localStorage.setItem("data", JSON.stringify(basket));
 };
 
@@ -31,6 +32,7 @@ const decrement = (id) => {
 
   update(selected.id);
   productsPage.render();
+  isChecked();
   localStorage.setItem("data", JSON.stringify(basket));
 };
 
@@ -38,9 +40,13 @@ const decrement = (id) => {
 let update = (id) => {
   let search = basket.find((x) => x.id === id);
   document.getElementById(id).innerHTML = search.cart;
+  TotalPrice();
+  TotalProducts();
+  TotalOldPrice();
+  TotalDiscount();
 };
 
-// калькуляция количества позиций товаров в корзине (шапка)
+// калькуляция количества позиций товаров в корзине (шапка). подсчет количества позиций, без учета счетчика
 let calculation = () => {
   let cartIcon = document.getElementById("cartAmount");
   let cartLength = Object.keys(basket.map((x) => x.cart)).length;
@@ -61,44 +67,130 @@ let countPrice = (prrice, cart) => {
 
 // выбор всех чекбоксов
 function toggle(source) {
+  checkAll = document.getElementById("checkAll").checked;
+
   checkboxes = document.getElementsByName("check");
+  console.log(checkAll);
   for (var i = 0, n = checkboxes.length; i < n; i++) {
     checkboxes[i].checked = source.checked;
     let selected = checkboxes[i].id.substr(5);
     let search = basket.find((x) => x.id === selected);
-    search.check = !search.check;
+    search.checked = checkAll;
     localStorage.setItem("data", JSON.stringify(basket));
     update(selected);
   }
 }
 
+// отображение статусов чекбоксов
+function isChecked() {
+  let checkboxes = document.getElementsByName("check");
+  for (var i = 0, n = checkboxes.length; i < n; i++) {
+    let selected = checkboxes[i].id.substr(5);
+    let search = basket.find((x) => x.id === selected);
+    if (search.checked) {
+      checkboxes[i].checked = true;
+    }
+  }
+}
+
 // смена статуса чекбокса в ЛС по клику
 function isCheck(id) {
+  let checkbox = document.getElementById(`check${id.id}`).checked;
+  console.log(checkbox);
   let selected = id;
   let search = basket.find((x) => x.id === selected.id);
-  search.check = !search.check;
+  search.checked = checkbox;
   localStorage.setItem("data", JSON.stringify(basket));
   update(selected.id);
 }
 
 // общая стоимость корзины
-let TotalAmount = () => {
+let TotalPrice = () => {
+  let label = document.getElementById("order__price");
   if (basket.length !== 0) {
     let amount = basket
       .map((x) => {
-        let { item, id } = x;
-        console.log(x);
+        let { id } = x;
         let search = basket.find((y) => y.id === id) || [];
-        if (search.check) {
+        if (search.checked) {
           return search.cart * search.newPrice;
         } else {
           return 0;
         }
       })
       .reduce((x, y) => x + y, 0);
-
-    console.log(amount);
+    label.innerHTML = `${amount} сом`;
   }
 };
 
-TotalAmount();
+// общее количество товаров
+let TotalProducts = () => {
+  let label = document.getElementById("order__products");
+  if (basket.length !== 0) {
+    let amount = basket
+      .map((x) => {
+        let { id } = x;
+        let search = basket.find((y) => y.id === id) || [];
+        if (search.checked) {
+          return search.cart;
+        } else {
+          return 0;
+        }
+      })
+      .reduce((x, y) => x + y, 0);
+    // склонение окончаний
+    let declOfNum = (n) => {
+      n = Math.abs(amount) % 100;
+      let n1 = n % 10;
+      if (n > 10 && n < 20) {
+        return "товаров";
+      }
+      if (n1 > 1 && n1 < 5) {
+        return "товара";
+      }
+      if (n1 == 1) {
+        return "товар";
+      }
+      return "товаров";
+    };
+
+    label.innerHTML = `${amount} ${declOfNum(amount)}`;
+  }
+};
+
+// общая стоимость корзины (цена без скидки)
+let TotalOldPrice = () => {
+  let label = document.getElementById("order__oldPrice");
+  if (basket.length !== 0) {
+    let amount = basket
+      .map((x) => {
+        let { id } = x;
+        let search = basket.find((y) => y.id === id) || [];
+        if (search.checked) {
+          return search.cart * search.oldPrice;
+        } else {
+          return 0;
+        }
+      })
+      .reduce((x, y) => x + y, 0);
+    label.innerHTML = `${amount} сом`;
+  }
+};
+
+let TotalDiscount = () => {
+  let label = document.getElementById("order__discount");
+  if (basket.length !== 0) {
+    let amount = basket
+      .map((x) => {
+        let { id } = x;
+        let search = basket.find((y) => y.id === id) || [];
+        if (search.checked) {
+          return search.cart * search.oldPrice - search.cart * search.newPrice;
+        } else {
+          return 0;
+        }
+      })
+      .reduce((x, y) => x + y, 0);
+    label.innerHTML = `- ${amount} сом`;
+  }
+};

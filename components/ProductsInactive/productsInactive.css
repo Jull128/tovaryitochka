@@ -1,0 +1,35 @@
+.productsInactive__list {
+  width: 857px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+  padding-left: 34px;
+}
+
+.productsInactive__item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding-top: 12px;
+}
+
+.productsInactive__item_img {
+  width: 72px;
+  height: 96px;
+  border-radius: 8px;
+  filter: grayscale(100%);
+}
+
+.productsInactive__item_description {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 275px;
+  color: var(--system-gray, #a0a0a4);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+}

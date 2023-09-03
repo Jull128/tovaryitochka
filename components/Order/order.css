@@ -1,6 +1,8 @@
 .order {
+  position: relative;
+  top: -12px;
   display: flex;
-  width: 429px;
+  width: 381px;
   padding: 16px 24px 24px 24px;
   flex-direction: column;
   align-items: center;
@@ -18,9 +20,50 @@
   display: flex;
   flex-direction: column;
 }
+.order__total:first-child {
+  padding-bottom: 8px;
+}
+
+.order__section_delivery {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
 
 .order__total {
   width: 100%;
   display: flex;
   justify-content: space-between;
+}
+
+.order__delivery_place {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.order__delivery_edit_title {
+  display: flex;
+  justify-content: space-between;
+}
+.order__delivery_edit {
+  background: center url(/img/icons/pencil.svg) no-repeat;
+  border: none;
+  width: 20px;
+}
+.order__delivery_info {
+  display: flex;
+  padding: 8px 8px 12px 8px;
+  align-items: center;
+  gap: 8px;
+  align-self: stretch;
+  border-radius: 8px;
+  background: var(--background-smoky, #f6f6fa);
+}
+.order__delivery_info > p {
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
 }

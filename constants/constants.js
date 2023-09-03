@@ -10,20 +10,20 @@ const CATALOG = [
     color: "белый",
     size: 56,
     sortingCenter: "OOO Вайлдберриз",
-    check: false,
+    checked: false,
   },
   {
     id: "el2",
     name: "Силиконовый чехол картхолдер (отверстия) для карт, прозрачный кейс бампер на Apple iPhone XR, MobiSafe",
     img: "img/catalog/case.png",
     oldPrice: 2300047,
-    newPrice: 210047,
+    newPrice: 2100047,
     cart: 1,
     availability: 250,
     color: "прозрачный",
     size: "",
     sortingCenter: "OOO Мегапрофстиль",
-    check: false,
+    checked: false,
   },
   {
     id: "el3",
@@ -36,6 +36,35 @@ const CATALOG = [
     color: "",
     size: "",
     sortingCenter: "OOO Вайлдберриз",
-    check: false,
+    checked: false,
+  },
+];
+
+const ADRESS = [
+  {
+    id: "1",
+    name: "Бишкек, улица Табышалиева, 57",
+    checked: true,
+  },
+  {
+    id: "2",
+    name: "Бишкек, улица Жукеева-Пудовкина, 77/1",
+    checked: false,
+  },
+  {
+    id: "3",
+    name: "Бишкек, микрорайон Джал, улица Ахунбаева Исы, 67/1",
+    checked: false,
+  },
+];
+
+const DELIVERY = [
+  {
+    name: "В пункт выдачи",
+    checked: true,
+  },
+  {
+    name: "Курьером",
+    checked: false,
   },
 ];
