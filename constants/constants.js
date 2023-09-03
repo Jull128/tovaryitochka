@@ -42,17 +42,17 @@ const CATALOG = [
 
 const ADRESS = [
   {
-    id: "1",
+    id: "adr1",
     name: "Бишкек, улица Табышалиева, 57",
     checked: true,
   },
   {
-    id: "2",
+    id: "adr2",
     name: "Бишкек, улица Жукеева-Пудовкина, 77/1",
     checked: false,
   },
   {
-    id: "3",
+    id: "adr3",
     name: "Бишкек, микрорайон Джал, улица Ахунбаева Исы, 67/1",
     checked: false,
   },
@@ -60,10 +60,12 @@ const ADRESS = [
 
 const DELIVERY = [
   {
+    id: "del1",
     name: "В пункт выдачи",
     checked: true,
   },
   {
+    id: "del2",
     name: "Курьером",
     checked: false,
   },

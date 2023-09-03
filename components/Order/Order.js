@@ -24,7 +24,7 @@ class Order {
                 <div class='order__delivery_place'>
                     <div class='order__delivery_edit_title'>
                     <h3>Доставка в пункт выдачи</h3>
-                    <button class='order__delivery_edit'></button>
+                    <button class='order__delivery_edit' onclick='openModal()'></button>
                     </div>
                     <p>Бишкек, улица Ахматбека Суюбаеваб 12/1</p>
                     <p>5-8 фев</p>

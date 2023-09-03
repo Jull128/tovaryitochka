@@ -51,6 +51,7 @@
   background: center url(/img/icons/pencil.svg) no-repeat;
   border: none;
   width: 20px;
+  cursor: pointer;
 }
 .order__delivery_info {
   display: flex;
