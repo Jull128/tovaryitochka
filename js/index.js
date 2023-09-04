@@ -1,12 +1,29 @@
 // отображение корзины
-const catalog = () => {
+const dataCatalog = () => {
   if (localStorage.getItem("data")) {
     return JSON.parse(localStorage.getItem("data"));
   } else return CATALOG;
 };
 
-let basket = catalog();
+// отображение корзины
+const dataDelivery = () => {
+  if (localStorage.getItem("dataDelivery")) {
+    return JSON.parse(localStorage.getItem("dataDelivery"));
+  } else return DELIVERY;
+};
 
+// отображение корзины
+const dataAdress = () => {
+  if (localStorage.getItem("dataAdress")) {
+    return JSON.parse(localStorage.getItem("dataAdress"));
+  } else return ADRESS;
+};
+
+let basket = dataCatalog();
+let delivery = dataDelivery();
+let adress = dataAdress();
+
+// ПРОДУКТЫ
 // счетчик на увеличение позиции товара
 const increment = (id) => {
   let selected = id;
@@ -49,7 +66,7 @@ let update = (id) => {
 // калькуляция количества позиций товаров в корзине (шапка). подсчет количества позиций, без учета счетчика
 let calculation = () => {
   let cartIcon = document.getElementById("cartAmount");
-  let cartLength = Object.keys(basket.map((x) => x.cart)).length;
+  let cartLength = Object.keys(basket?.map((x) => x.cart)).length;
   cartIcon.innerHTML = cartLength;
 };
 calculation();
@@ -93,7 +110,7 @@ function isChecked() {
   }
 }
 
-// смена статуса чекбокса в ЛС по клику
+// смена статуса чекбокса товара в ЛС по клику
 function isCheck(id) {
   let checkbox = document.getElementById(`check${id.id}`).checked;
   console.log(checkbox);
@@ -104,6 +121,7 @@ function isCheck(id) {
   update(selected.id);
 }
 
+// КОРЗИНА
 // общая стоимость корзины
 let TotalPrice = () => {
   let label = document.getElementById("order__price");
@@ -194,3 +212,39 @@ let TotalDiscount = () => {
     label.innerHTML = `- ${amount} сом`;
   }
 };
+
+//ДОСТАВКА
+// обновление корзины
+// let updateDelivery = (id) => {
+//   let search = delivery.find((x) => x.id === id);
+//   document.getElementById(id).innerHTML = search.cart;
+// };
+
+// смена статуса чекбокса товара в ЛС по клику
+function isCheckDel(id) {
+  let checkbox = document.getElementById(id.id).checked;
+  console.log(checkbox);
+  let selected = id;
+  console.log(selected);
+  let search = delivery.find((x) => x.id === selected.id);
+  console.log(search.checked);
+  search.checked = checkbox;
+  localStorage.setItem("dataDelivery", JSON.stringify(delivery));
+}
+
+function isCheckedDel() {
+  let checkboxes = document.getElementsByName("checkDel");
+  console.log(checkboxes);
+  for (var i = 0, n = checkboxes.length; i < n; i++) {
+    let selected = checkboxes[i].id;
+    console.log(selected);
+    let search = delivery.find((x) => x.id === selected);
+    console.log(search.checked);
+    console.log(checkboxes[i].checked);
+    if (search.checked) {
+      checkboxes[i].checked = true;
+    } else {
+      checkboxes[i].checked = false;
+    }
+  }
+}

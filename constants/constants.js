@@ -62,7 +62,7 @@ const DELIVERY = [
   {
     id: "del1",
     name: "В пункт выдачи",
-    checked: true,
+    checked: false,
   },
   {
     id: "del2",
@@ -70,3 +70,34 @@ const DELIVERY = [
     checked: false,
   },
 ];
+
+// const ADRESS = [
+//   {
+//     id: "adr1",
+//     name: "Бишкек, улица Табышалиева, 57",
+//     checked: true,
+//   },
+//   {
+//     id: "adr2",
+//     name: "Бишкек, улица Жукеева-Пудовкина, 77/1",
+//     checked: false,
+//   },
+//   {
+//     id: "adr3",
+//     name: "Бишкек, микрорайон Джал, улица Ахунбаева Исы, 67/1",
+//     checked: false,
+//   },
+// ];
+
+// const DELIVERY = [
+//   {
+//     id: "del1",
+//     name: "В пункт выдачи",
+//     checked: true,
+//   },
+//   {
+//     id: "del2",
+//     name: "Курьером",
+//     checked: false,
+//   },
+// ];

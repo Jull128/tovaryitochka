@@ -7,22 +7,25 @@ function openModal() {
   let htmlCatalogAdress = "";
   let htmlCatalogDelivery = "";
 
-  ADRESS.forEach(({ id, name, checked }) => {
-    htmlCatalogAdress += `
-    <div>
-        <input type='radio' />
-       <p>${name}</p>
-       <img src='img/icons/trashcan.svg'/>
-    </div>
+  delivery.forEach(({ id, name, checked }) => {
+    htmlCatalogDelivery += `
+        <label class="checkbox-btn">
+            <input type="radio" onclick='isCheckDel(${id})' name='checkDel' id='${id}' class='input__delivery'>
+            <span>${name}</span>
+        </label>
   `;
   });
 
-  DELIVERY.forEach(({ id, name, checked }) => {
-    htmlCatalogDelivery += `
-        <label class="checkbox-btn">
-            <input type="checkbox" class='input__delivery'>
-            <span>${name}</span>
-        </label>
+  adress.forEach(({ id, name, checked }) => {
+    htmlCatalogAdress += `
+    <div class="modal__adress_line">
+    <label class="modal__adress_label">
+       <input class='input__adress' type='radio' />
+       <span></span>
+    </label>
+       <p class='modal__adress_p' >${name}</p>
+       <img style="margin: 0 2px" src='img/icons/trashcan.svg'/>
+       </div>
   `;
   });
 
@@ -34,16 +37,17 @@ function openModal() {
     ${htmlCatalogDelivery}
     </div>
     </div>
-        <p>Мои адреса</p>
-        <div>
+    <div class="modal__adress_checkbox_container">
+        <p class="signature">Мои адреса</p>
         ${htmlCatalogAdress}
         </div>
     </div>
 `;
-  modalEl.innerHTML = html;
 
-  const btnClose = document.querySelector(".modal__button-close");
-  btnClose.addEventListener("click", () => closeModal());
+  modalEl.innerHTML = html;
+  isCheckedDel();
+  // const btnClose = document.querySelector(".modal__button-close");
+  // btnClose.addEventListener("click", () => closeModal());
 }
 
 function closeModal() {

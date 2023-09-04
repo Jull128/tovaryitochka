@@ -2,7 +2,7 @@ class Products {
   render() {
     let htmlCatalog = "";
 
-    basket.forEach(
+    basket?.forEach(
       ({
         id,
         name,
