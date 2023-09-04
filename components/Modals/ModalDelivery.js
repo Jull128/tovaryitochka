@@ -10,7 +10,7 @@ function openModal() {
   delivery.forEach(({ id, name, checked }) => {
     htmlCatalogDelivery += `
         <label class="checkbox-btn">
-            <input type="radio" onclick='isCheckDel(${id})' name='checkDel' id='${id}' class='input__delivery'>
+            <input type="radio" name='checkDel' id='${id}' class='input__delivery'>
             <span>${name}</span>
         </label>
   `;
@@ -20,7 +20,7 @@ function openModal() {
     htmlCatalogAdress += `
     <div class="modal__adress_line">
     <label class="modal__adress_label">
-       <input class='input__adress' type='radio' />
+       <input class='input__adress' name='checkAdr'  type='radio' id='${id}' />
        <span></span>
     </label>
        <p class='modal__adress_p' >${name}</p>
@@ -41,11 +41,16 @@ function openModal() {
         <p class="signature">Мои адреса</p>
         ${htmlCatalogAdress}
         </div>
+        <div class='modal__button_container'> 
+        <button class='modal_button' onclick='save()'>Выбрать</button>
+        </div>
     </div>
+
 `;
 
   modalEl.innerHTML = html;
   isCheckedDel();
+  isCheckedAdr();
   // const btnClose = document.querySelector(".modal__button-close");
   // btnClose.addEventListener("click", () => closeModal());
 }
@@ -66,3 +71,11 @@ window.addEventListener("keydown", (e) => {
     closeModal();
   }
 });
+
+function save() {
+  isCheckedDelEdit();
+  isCheckedAdrEdit();
+  localStorage.setItem("dataDelivery", JSON.stringify(delivery));
+  localStorage.setItem("dataAdress", JSON.stringify(adress));
+  closeModal();
+}

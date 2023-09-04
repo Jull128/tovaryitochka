@@ -62,7 +62,7 @@ const DELIVERY = [
   {
     id: "del1",
     name: "В пункт выдачи",
-    checked: false,
+    checked: true,
   },
   {
     id: "del2",

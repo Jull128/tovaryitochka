@@ -214,24 +214,7 @@ let TotalDiscount = () => {
 };
 
 //ДОСТАВКА
-// обновление корзины
-// let updateDelivery = (id) => {
-//   let search = delivery.find((x) => x.id === id);
-//   document.getElementById(id).innerHTML = search.cart;
-// };
-
-// смена статуса чекбокса товара в ЛС по клику
-function isCheckDel(id) {
-  let checkbox = document.getElementById(id.id).checked;
-  console.log(checkbox);
-  let selected = id;
-  console.log(selected);
-  let search = delivery.find((x) => x.id === selected.id);
-  console.log(search.checked);
-  search.checked = checkbox;
-  localStorage.setItem("dataDelivery", JSON.stringify(delivery));
-}
-
+// отображение статусов чекбоксов при открытии модалки
 function isCheckedDel() {
   let checkboxes = document.getElementsByName("checkDel");
   console.log(checkboxes);
@@ -245,6 +228,61 @@ function isCheckedDel() {
       checkboxes[i].checked = true;
     } else {
       checkboxes[i].checked = false;
+    }
+  }
+}
+
+// отображение статусов чекбоксов при смене чекбокса
+function isCheckedDelEdit() {
+  let checkboxes = document.getElementsByName("checkDel");
+  console.log(checkboxes);
+  for (var i = 0, n = checkboxes.length; i < n; i++) {
+    let selected = checkboxes[i].id;
+    console.log(selected);
+    let search = delivery.find((x) => x.id === selected);
+    console.log(search.checked);
+    console.log(checkboxes[i].checked);
+    if (checkboxes[i].checked) {
+      search.checked = true;
+    } else {
+      search.checked = false;
+    }
+  }
+}
+
+//АДРЕС
+// отображение статусов чекбоксов
+function isCheckedAdr() {
+  let checkboxes = document.getElementsByName("checkAdr");
+  console.log(checkboxes);
+  for (var i = 0, n = checkboxes.length; i < n; i++) {
+    let selected = checkboxes[i].id;
+    console.log(selected);
+    let search = adress.find((x) => x.id === selected);
+    console.log(search.checked);
+    console.log(checkboxes[i].checked);
+    if (search.checked) {
+      checkboxes[i].checked = true;
+    } else {
+      checkboxes[i].checked = false;
+    }
+  }
+}
+
+// отображение статусов чекбоксов при смене чекбокса
+function isCheckedAdrEdit() {
+  let checkboxes = document.getElementsByName("checkAdr");
+  console.log(checkboxes);
+  for (var i = 0, n = checkboxes.length; i < n; i++) {
+    let selected = checkboxes[i].id;
+    console.log(selected);
+    let search = adress.find((x) => x.id === selected);
+    console.log(search.checked);
+    console.log(checkboxes[i].checked);
+    if (checkboxes[i].checked) {
+      search.checked = true;
+    } else {
+      search.checked = false;
     }
   }
 }
