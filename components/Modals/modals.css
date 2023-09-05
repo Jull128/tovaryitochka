@@ -92,6 +92,12 @@
   gap: 8px;
 }
 
+.modal__card_checkbox_container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
 .modal__adress_line {
   display: flex;
   align-items: center;
@@ -106,6 +112,16 @@
 .modal__adress_p {
   width: 100%;
   max-width: 400px;
+  margin-right: auto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  padding: 4px 0px 8px 0px;
+}
+
+.modal__card_p {
+  width: 292px;
   margin-right: auto;
   font-size: 16px;
   font-style: normal;

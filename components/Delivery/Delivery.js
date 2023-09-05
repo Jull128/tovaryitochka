@@ -30,8 +30,17 @@ class Delivery {
 </div>
 <div class='delivery__section'>
     <div>
-        <h2>Способ оплаты</h2>
-        <div name='cardchoose'></div>
+    <div class='delivery__title'>
+    <h2>Способ оплаты</h2>
+    <h4 onclick='openModalCard()' style='color: var(--system-magenta, #CB11AB); cursor: pointer;'>Изменить</h4>
+    </div>
+
+        <div name='cardchoose' style='height: 24px; 
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 16px 0 8px 0
+        '></div>
         <p class="caption" style='color: var(--system-gray, #A0A0A4);'>Спишем оплату с карты при получении</p>
     </div>
 </div>

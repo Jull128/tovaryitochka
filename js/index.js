@@ -363,7 +363,7 @@ function isCheckedCardEdit() {
 }
 
 let isCardChoose = () => {
-  let label = document.getElementById("cardchoose");
+  let label = document.getElementsByName("cardchoose");
   if (card.length !== 0) {
     let amount = card
       .map((x) => {
@@ -374,7 +374,9 @@ let isCardChoose = () => {
         }
       })
       .join("");
-    label.innerHTML = `${amount}`;
+    label.forEach((x) => {
+      x.innerHTML = `${amount}`;
+    });
   }
 };
 
