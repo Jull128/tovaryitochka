@@ -5,23 +5,31 @@ const dataCatalog = () => {
   } else return CATALOG;
 };
 
-// отображение корзины
+// отображение доставки
 const dataDelivery = () => {
   if (localStorage.getItem("dataDelivery")) {
     return JSON.parse(localStorage.getItem("dataDelivery"));
   } else return DELIVERY;
 };
 
-// отображение корзины
+// отображение адреса
 const dataAdress = () => {
   if (localStorage.getItem("dataAdress")) {
     return JSON.parse(localStorage.getItem("dataAdress"));
   } else return ADRESS;
 };
 
+// отображение карт
+const dataCard = () => {
+  if (localStorage.getItem("dataCard")) {
+    return JSON.parse(localStorage.getItem("dataCard"));
+  } else return CARD;
+};
+
 let basket = dataCatalog();
 let delivery = dataDelivery();
 let adress = dataAdress();
+let card = dataCard();
 
 // ПРОДУКТЫ
 // счетчик на увеличение позиции товара
@@ -195,6 +203,7 @@ let TotalOldPrice = () => {
   }
 };
 
+//общая стоимость корзины (скидка)
 let TotalDiscount = () => {
   let label = document.getElementById("order__discount");
   if (basket.length !== 0) {
@@ -209,7 +218,7 @@ let TotalDiscount = () => {
         }
       })
       .reduce((x, y) => x + y, 0);
-    label.innerHTML = `- ${amount} сом`;
+    label.innerHTML = `−${amount} сом`;
   }
 };
 
@@ -217,13 +226,12 @@ let TotalDiscount = () => {
 // отображение статусов чекбоксов при открытии модалки
 function isCheckedDel() {
   let checkboxes = document.getElementsByName("checkDel");
-  console.log(checkboxes);
+
   for (var i = 0, n = checkboxes.length; i < n; i++) {
     let selected = checkboxes[i].id;
-    console.log(selected);
+
     let search = delivery.find((x) => x.id === selected);
-    console.log(search.checked);
-    console.log(checkboxes[i].checked);
+
     if (search.checked) {
       checkboxes[i].checked = true;
     } else {
@@ -238,10 +246,9 @@ function isCheckedDelEdit() {
   console.log(checkboxes);
   for (var i = 0, n = checkboxes.length; i < n; i++) {
     let selected = checkboxes[i].id;
-    console.log(selected);
+
     let search = delivery.find((x) => x.id === selected);
-    console.log(search.checked);
-    console.log(checkboxes[i].checked);
+
     if (checkboxes[i].checked) {
       search.checked = true;
     } else {
@@ -250,6 +257,22 @@ function isCheckedDelEdit() {
   }
 }
 
+let isDeliveryChoose = () => {
+  let label = document.getElementById("deliverychoose");
+  if (delivery.length !== 0) {
+    let amount = delivery
+      .map((x) => {
+        let { id } = x;
+        let search = delivery.find((y) => y.id === id) || [];
+        if (search.checked) {
+          return search.name;
+        }
+      })
+      .join("");
+    label.innerHTML = `${amount}`;
+  }
+};
+
 //АДРЕС
 // отображение статусов чекбоксов
 function isCheckedAdr() {
@@ -257,10 +280,9 @@ function isCheckedAdr() {
   console.log(checkboxes);
   for (var i = 0, n = checkboxes.length; i < n; i++) {
     let selected = checkboxes[i].id;
-    console.log(selected);
+
     let search = adress.find((x) => x.id === selected);
-    console.log(search.checked);
-    console.log(checkboxes[i].checked);
+
     if (search.checked) {
       checkboxes[i].checked = true;
     } else {
@@ -275,14 +297,119 @@ function isCheckedAdrEdit() {
   console.log(checkboxes);
   for (var i = 0, n = checkboxes.length; i < n; i++) {
     let selected = checkboxes[i].id;
-    console.log(selected);
+
     let search = adress.find((x) => x.id === selected);
-    console.log(search.checked);
-    console.log(checkboxes[i].checked);
+
     if (checkboxes[i].checked) {
       search.checked = true;
     } else {
       search.checked = false;
     }
   }
+}
+
+let isAdressChoose = () => {
+  let label = document.getElementsByName("adresschoose");
+
+  if (adress.length !== 0) {
+    let amount = adress
+      .map((x) => {
+        let { id } = x;
+        let search = adress.find((y) => y.id === id) || [];
+        if (search.checked) {
+          return search.name;
+        }
+      })
+      .join("");
+    label.forEach((x) => {
+      x.innerHTML = `${amount}`;
+    });
+  }
+};
+
+//КАРТЫ
+// отображение статусов чекбоксов
+function isCheckedCard() {
+  let checkboxes = document.getElementsByName("checkAdr");
+
+  for (var i = 0, n = checkboxes.length; i < n; i++) {
+    let selected = checkboxes[i].id;
+
+    let search = card.find((x) => x.id === selected);
+
+    if (search.checked) {
+      checkboxes[i].checked = true;
+    } else {
+      checkboxes[i].checked = false;
+    }
+  }
+}
+
+// отображение статусов чекбоксов при смене чекбокса
+function isCheckedCardEdit() {
+  let checkboxes = document.getElementsByName("checkAdr");
+
+  for (var i = 0, n = checkboxes.length; i < n; i++) {
+    let selected = checkboxes[i].id;
+
+    let search = card.find((x) => x.id === selected);
+
+    if (checkboxes[i].checked) {
+      search.checked = true;
+    } else {
+      search.checked = false;
+    }
+  }
+}
+
+let isCardChoose = () => {
+  let label = document.getElementById("cardchoose");
+  if (card.length !== 0) {
+    let amount = card
+      .map((x) => {
+        let { id } = x;
+        let search = card.find((y) => y.id === id) || [];
+        if (search.checked) {
+          return `<img src='${search.img}' class='order_cardImg'/>${search.name}`;
+        }
+      })
+      .join("");
+    label.innerHTML = `${amount}`;
+  }
+};
+
+function closeModal() {
+  modalEl.classList.remove("modal--show");
+  //   document.body.classList.remove("stop-scrolling");
+}
+
+window.addEventListener("click", (e) => {
+  if (e.target === modalEl) {
+    closeModal();
+  }
+});
+
+window.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    closeModal();
+  }
+});
+
+function save() {
+  isCheckedDelEdit();
+  isCheckedAdrEdit();
+  localStorage.setItem("dataDelivery", JSON.stringify(delivery));
+  localStorage.setItem("dataAdress", JSON.stringify(adress));
+  closeModal();
+  isDeliveryChoose();
+  isAdressChoose();
+  orderBasket.render();
+}
+
+function saveCard() {
+  isCheckedCardEdit();
+  localStorage.setItem("dataCard", JSON.stringify(card));
+  closeModal();
+  isCardChoose();
+  orderBasket.render();
 }

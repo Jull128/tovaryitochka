@@ -68,3 +68,118 @@
   font-weight: 400;
   line-height: 16px;
 }
+
+.delivery-info3 {
+  box-sizing: border-box;
+  display: flex;
+  flex: 0 1 auto;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+
+.free-shipping {
+  box-sizing: border-box;
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+
+.refund-info {
+  box-sizing: border-box;
+  flex: 0 1 auto;
+  font: 400 13px/16px Segoe UI;
+  color: black;
+}
+
+.free-shipping-text {
+  font: 400 13px Segoe UI;
+  color: #0cb477;
+}
+
+.delivery-info-divider {
+  height: 1px;
+  stroke-width: 1px;
+  stroke: rgba(12, 180, 119, 0.2);
+  background: 0 100% url(/img/icons/VectorFree.svg) no-repeat;
+}
+
+.order__cardChoose {
+  height: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+}
+
+.order__card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.order_cardImg {
+  height: 100%;
+  width: 32px;
+  border-radius: 4px;
+  background: var(--background-smoky, #f6f6fa);
+}
+
+.order__card_edit_title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.order_button {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  height: 44px;
+  font: 700 16px Segoe UI;
+  color: white;
+  cursor: pointer;
+  background: #cb11ab;
+  border: none;
+  border-radius: 8px;
+}
+
+.payment-container {
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  padding: 7px 7px 12px;
+  margin-top: 8px;
+  background: #f6f6fa;
+  border-radius: 8px;
+}
+.payment-method-container {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+.svg-container1 {
+  box-sizing: border-box;
+  display: flex;
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+}
+.payment-description {
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  margin-left: 7px;
+  font: 400 13px Segoe UI;
+  color: black;
+}
+.payment-option-text {
+  box-sizing: border-box;
+  margin-top: 7px;
+  font: 400 13px Segoe UI;
+  color: black;
+}

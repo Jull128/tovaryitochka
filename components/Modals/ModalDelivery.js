@@ -54,28 +54,3 @@ function openModal() {
   // const btnClose = document.querySelector(".modal__button-close");
   // btnClose.addEventListener("click", () => closeModal());
 }
-
-function closeModal() {
-  modalEl.classList.remove("modal--show");
-  //   document.body.classList.remove("stop-scrolling");
-}
-
-window.addEventListener("click", (e) => {
-  if (e.target === modalEl) {
-    closeModal();
-  }
-});
-
-window.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") {
-    closeModal();
-  }
-});
-
-function save() {
-  isCheckedDelEdit();
-  isCheckedAdrEdit();
-  localStorage.setItem("dataDelivery", JSON.stringify(delivery));
-  localStorage.setItem("dataAdress", JSON.stringify(adress));
-  closeModal();
-}

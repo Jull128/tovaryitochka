@@ -11,6 +11,16 @@ const CATALOG = [
     size: 56,
     sortingCenter: "OOO Вайлдберриз",
     checked: false,
+    dataDelivery: [
+      {
+        data: "5-6",
+        count: 1,
+      },
+      {
+        data: "7-8",
+        count: 1,
+      },
+    ],
   },
   {
     id: "el2",
@@ -61,43 +71,39 @@ const ADRESS = [
 const DELIVERY = [
   {
     id: "del1",
-    name: "В пункт выдачи",
+    name: "в пункт выдачи",
     checked: true,
   },
   {
     id: "del2",
-    name: "Курьером",
+    name: "курьером",
     checked: false,
   },
 ];
 
-// const ADRESS = [
-//   {
-//     id: "adr1",
-//     name: "Бишкек, улица Табышалиева, 57",
-//     checked: true,
-//   },
-//   {
-//     id: "adr2",
-//     name: "Бишкек, улица Жукеева-Пудовкина, 77/1",
-//     checked: false,
-//   },
-//   {
-//     id: "adr3",
-//     name: "Бишкек, микрорайон Джал, улица Ахунбаева Исы, 67/1",
-//     checked: false,
-//   },
-// ];
-
-// const DELIVERY = [
-//   {
-//     id: "del1",
-//     name: "В пункт выдачи",
-//     checked: true,
-//   },
-//   {
-//     id: "del2",
-//     name: "Курьером",
-//     checked: false,
-//   },
-// ];
+const CARD = [
+  {
+    id: "card1",
+    name: "1234 56•• •••• 1234",
+    img: "img/icons/mir.svg",
+    checked: true,
+  },
+  {
+    id: "card2",
+    name: "1234 56•• •••• 1234",
+    img: "img/icons/visa.svg",
+    checked: false,
+  },
+  {
+    id: "card3",
+    name: "1234 56•• •••• 1234",
+    img: "img/icons/mastercard.svg",
+    checked: false,
+  },
+  {
+    id: "card4",
+    name: "1234 56•• •••• 1234",
+    img: "img/icons/maestro.svg",
+    checked: false,
+  },
+];

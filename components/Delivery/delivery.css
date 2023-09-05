@@ -6,10 +6,8 @@
 
 .delivery__section {
   display: flex;
-  width: 100%;
   padding: 16px 24px 24px 24px;
   flex-direction: column;
-  align-items: center;
   gap: 24px;
   align-self: stretch;
   border-radius: 16px;
@@ -18,10 +16,36 @@
 
 .delivery__block {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-.delivery__line {
+.delivery__info {
+  display: flex;
+  gap: 32px;
+}
+
+.delivery__info_line {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.delivery__info_label {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.delivery__title {
   width: 100%;
   display: flex;
   justify-content: space-between;
+}
+
+.delivery__info_line {
+  display: flex;
+  gap: 32px;
 }

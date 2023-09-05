@@ -18,8 +18,8 @@ class ProductsInactive {
                     </div>
                 </div>
                 <div class="countainer__counter_price">
-                    <div style='display:flex; flex-direction:column; gap:8px'>
-                        <div class='btn_lovely_remove'>
+                    <div style='display:flex; flex-direction:column; gap:8px; margin-left: 44px;'>
+                        <div class='btn_lovely_remove '>
                             <button class='heart'></button>
                             <button class='trash'></button>
                         </div>
