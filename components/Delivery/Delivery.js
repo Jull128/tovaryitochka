@@ -30,9 +30,9 @@ class Delivery {
 </div>
 <div class='delivery__section'>
     <div>
-        <div>Способ оплаты</div>
-        <div></div>
-        <p>Спишем оплату с карты при получении</p>
+        <h2>Способ оплаты</h2>
+        <div name='cardchoose'></div>
+        <p class="caption" style='color: var(--system-gray, #A0A0A4);'>Спишем оплату с карты при получении</p>
     </div>
 </div>
 </div>

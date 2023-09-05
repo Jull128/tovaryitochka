@@ -277,7 +277,7 @@ let isDeliveryChoose = () => {
 // отображение статусов чекбоксов
 function isCheckedAdr() {
   let checkboxes = document.getElementsByName("checkAdr");
-  console.log(checkboxes);
+
   for (var i = 0, n = checkboxes.length; i < n; i++) {
     let selected = checkboxes[i].id;
 
@@ -294,7 +294,7 @@ function isCheckedAdr() {
 // отображение статусов чекбоксов при смене чекбокса
 function isCheckedAdrEdit() {
   let checkboxes = document.getElementsByName("checkAdr");
-  console.log(checkboxes);
+
   for (var i = 0, n = checkboxes.length; i < n; i++) {
     let selected = checkboxes[i].id;
 

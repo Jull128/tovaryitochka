@@ -52,7 +52,7 @@ class Order {
                         <h3>Оплата картой</h3>
                         <button class='order__delivery_edit' onclick='openModalCard()'></button>
                     </div>
-                    <p id='cardchoose' class='order__cardChoose'></p>
+                    <p id='cardchoose' name='cardchoose' class='order__cardChoose'></p>
                     <div class='payment-container'>
                     <div class='payment-method-container'>
                     <div class='item__checkbox_container'>
