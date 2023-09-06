@@ -12,14 +12,14 @@ class Delivery {
             <div class='delivery__info_line'>
                 <p class='delivery__info_label'>Пункт выдачи</p>
                 <p class='delivery__info_label'>Стоимость доставки</p>
-                <p class='delivery__info_label'>5—6 февраля</p>
-                <p class='delivery__info_label'>7—8 февраля</p>
+                <p class='delivery__info_label' style="height: 56px">5—6 февраля</p>
+                <p class='delivery__info_label' style="height: 56px">7—8 февраля</p>
             </div>
             <div class='delivery__info_line'>
                 <p name='adresschoose'></p>
                 <p>Бесплатно</p>
-                <p></p>
-                <p></p>
+                <div id='5-6' name='htmlDelivery' style='display: flex; gap: 8px; position: relative;'></div>
+                <div id='7-8' name='htmlDelivery' style='display: flex; gap: 8px; position: relative;'></div>
             </div>
         </div>
     </div>
@@ -34,7 +34,6 @@ class Delivery {
     <h2>Способ оплаты</h2>
     <h4 onclick='openModalCard()' style='color: var(--system-magenta, #CB11AB); cursor: pointer;'>Изменить</h4>
     </div>
-
         <div name='cardchoose' style='height: 24px; 
         display: flex;
         align-items: center;
@@ -44,11 +43,15 @@ class Delivery {
         <p class="caption" style='color: var(--system-gray, #A0A0A4);'>Спишем оплату с карты при получении</p>
     </div>
 </div>
+<div class='delivery__section'>
+
+</div>
 </div>
             `;
 
     ROOT_DELIVERY.innerHTML = htmlCatalog;
     isAdressChoose();
+    // htmlDelivery();
   }
 }
 

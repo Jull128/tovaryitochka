@@ -23,7 +23,11 @@ class Products {
                 <input type='checkbox' name='check' class="item__checkbox" onclick='isCheck(${id})' id='check${id}'/>
                 <label for='check${id}'></label>
                 </div>
-                 <img src="${img}" class="item__img" />
+                 <div 
+                 style='
+                 background: linear-gradient(0deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.05) 100%), url(${img}) 100% / cover no-repeat, lightgray 50% / cover no-repeat;
+                 '
+                 class="item__img"></div>
               </div>
               <div class="item__description">
                 <span class="item__name">${name}</span>

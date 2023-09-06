@@ -28,12 +28,22 @@ const CATALOG = [
     img: "img/catalog/case.png",
     oldPrice: 2300047,
     newPrice: 2100047,
-    cart: 1,
+    cart: 200,
     availability: 250,
     color: "прозрачный",
     size: "",
     sortingCenter: "OOO Мегапрофстиль",
     checked: false,
+    dataDelivery: [
+      {
+        data: "5-6",
+        count: 184,
+      },
+      {
+        data: "7-8",
+        count: 16,
+      },
+    ],
   },
   {
     id: "el3",
@@ -47,6 +57,16 @@ const CATALOG = [
     size: "",
     sortingCenter: "OOO Вайлдберриз",
     checked: false,
+    dataDelivery: [
+      {
+        data: "5-6",
+        count: 1,
+      },
+      {
+        data: "7-8",
+        count: 0,
+      },
+    ],
   },
 ];
 

@@ -19,7 +19,7 @@ const dataAdress = () => {
   } else return ADRESS;
 };
 
-// отображение карт
+// отображение карт оплаты
 const dataCard = () => {
   if (localStorage.getItem("dataCard")) {
     return JSON.parse(localStorage.getItem("dataCard"));
@@ -364,6 +364,7 @@ function isCheckedCardEdit() {
 
 let isCardChoose = () => {
   let label = document.getElementsByName("cardchoose");
+
   if (card.length !== 0) {
     let amount = card
       .map((x) => {
@@ -397,6 +398,7 @@ window.addEventListener("keydown", (e) => {
   }
 });
 
+// сохранение способа доставки
 function save() {
   isCheckedDelEdit();
   isCheckedAdrEdit();
@@ -408,10 +410,66 @@ function save() {
   orderBasket.render();
 }
 
+// сохранение выбранной карты
 function saveCard() {
   isCheckedCardEdit();
   localStorage.setItem("dataCard", JSON.stringify(card));
   closeModal();
   isCardChoose();
   orderBasket.render();
+}
+
+//вывод товаров в блок "Способ доставки" по датам
+// function htmlDelivery() {
+//   let htmlData = document.getElementsByName("htmlDelivery");
+//   basket.map((el) => {
+//     let selected = el.dataDelivery;
+//     let cart = el.cart;
+//     htmlData.forEach((x) => {
+//       for (let i = 0; i < selected?.length; i++) {
+//         if (selected[i].data === x.id && selected[i].count > 0 && cart > 0) {
+//           x.innerHTML += `
+//           <div style='width: 40px;
+//           height: 56px;
+//           border-radius: 8px;
+//           background: linear-gradient(0deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.05) 100%), url(${el.img}) 100% / cover no-repeat, lightgray 50% / cover no-repeat;
+//           '/><div class="deliveryAmount">0</div></div>`;
+//           cart--;
+//         }
+//       }
+//     });
+//   });
+// }
+// htmlDelivery();
+
+function htmlDeliverytest() {
+  //получем два элемента с датами в html
+  let label = document.getElementsByName("htmlDelivery");
+  console.log(label);
+  //перебираем корзину
+  basket.map((el) => {
+    //смотрим какие даты доставки есть у продукта
+    let dates = el.dataDelivery;
+    console.log(el.cart);
+    console.log(dates);
+    let cart = el.cart;
+    let amount = 0;
+    for (let i = 0; i < label.length; i++) {
+      if (label[i].id === dates[i]) {
+        if (cart >= label[i].count) {
+          amount = label[i].count;
+          cart = cart - amount;
+        } else {
+          amount = cart;
+          cart = cart - amount;
+        }
+      }
+      console.log(amount);
+    }
+  });
+
+  //перебираем корзину
+  label.forEach((x) => {
+    console.log(x.id);
+  });
 }

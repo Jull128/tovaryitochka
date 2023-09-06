@@ -75,6 +75,7 @@ class Order {
     isDeliveryChoose();
     isAdressChoose();
     isCardChoose();
+    htmlDeliverytest();
     TotalPrice();
     TotalProducts();
     TotalOldPrice();

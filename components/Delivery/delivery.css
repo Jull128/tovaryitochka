@@ -49,3 +49,25 @@
   display: flex;
   gap: 32px;
 }
+
+.deliveryAmount {
+  position: relative;
+  top: -13px;
+  left: 33px;
+  display: inline-flex;
+  height: 16px;
+  transform: rotate(0.074deg);
+  padding: 1px 4px 0px 4px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 16px;
+  background: var(--system-red, #f55123);
+  color: var(--system-white, #fff);
+  text-align: center;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 18px;
+}
