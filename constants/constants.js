@@ -11,10 +11,14 @@ const CATALOG = [
     size: 56,
     sortingCenter: "OOO Вайлдберриз",
     checked: false,
+    dataDel: {
+      "5-6": 3,
+      "7-8": 1,
+    },
     dataDelivery: [
       {
         data: "5-6",
-        count: 1,
+        count: 2,
       },
       {
         data: "7-8",
@@ -34,6 +38,10 @@ const CATALOG = [
     size: "",
     sortingCenter: "OOO Мегапрофстиль",
     checked: false,
+    dataDel: {
+      "5-6": 184,
+      "7-8": 16,
+    },
     dataDelivery: [
       {
         data: "5-6",
@@ -57,10 +65,15 @@ const CATALOG = [
     size: "",
     sortingCenter: "OOO Вайлдберриз",
     checked: false,
+    dataDel: {
+      "5-6": 2,
+      "7-8": 1,
+    },
+
     dataDelivery: [
       {
         data: "5-6",
-        count: 1,
+        count: 2,
       },
       {
         data: "7-8",

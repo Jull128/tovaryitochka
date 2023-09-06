@@ -44,14 +44,26 @@ class Delivery {
     </div>
 </div>
 <div class='delivery__section'>
-
+    <h2>Получатель</h2>
+    <form>
+        <div>
+            <input placeholder='Имя'>
+            <input placeholder='Фамилия' />
+        </div>
+        <div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </form>
 </div>
 </div>
             `;
 
     ROOT_DELIVERY.innerHTML = htmlCatalog;
     isAdressChoose();
-    // htmlDelivery();
+    isCardChoose();
+    htmlDeliverytest();
   }
 }
 

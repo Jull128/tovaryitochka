@@ -43,6 +43,8 @@ const increment = (id) => {
   update(selected.id);
   productsPage.render();
   isChecked();
+
+  deliveryPage.render();
   localStorage.setItem("data", JSON.stringify(basket));
 };
 
@@ -58,6 +60,7 @@ const decrement = (id) => {
   update(selected.id);
   productsPage.render();
   isChecked();
+  deliveryPage.render();
   localStorage.setItem("data", JSON.stringify(basket));
 };
 
@@ -419,57 +422,60 @@ function saveCard() {
   orderBasket.render();
 }
 
-//вывод товаров в блок "Способ доставки" по датам
-// function htmlDelivery() {
-//   let htmlData = document.getElementsByName("htmlDelivery");
-//   basket.map((el) => {
-//     let selected = el.dataDelivery;
-//     let cart = el.cart;
-//     htmlData.forEach((x) => {
-//       for (let i = 0; i < selected?.length; i++) {
-//         if (selected[i].data === x.id && selected[i].count > 0 && cart > 0) {
-//           x.innerHTML += `
-//           <div style='width: 40px;
-//           height: 56px;
-//           border-radius: 8px;
-//           background: linear-gradient(0deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.05) 100%), url(${el.img}) 100% / cover no-repeat, lightgray 50% / cover no-repeat;
-//           '/><div class="deliveryAmount">0</div></div>`;
-//           cart--;
-//         }
-//       }
-//     });
-//   });
-// }
-// htmlDelivery();
-
 function htmlDeliverytest() {
   //получем два элемента с датами в html
-  let label = document.getElementsByName("htmlDelivery");
-  console.log(label);
-  //перебираем корзину
-  basket.map((el) => {
-    //смотрим какие даты доставки есть у продукта
-    let dates = el.dataDelivery;
-    console.log(el.cart);
-    console.log(dates);
-    let cart = el.cart;
-    let amount = 0;
-    for (let i = 0; i < label.length; i++) {
-      if (label[i].id === dates[i]) {
-        if (cart >= label[i].count) {
-          amount = label[i].count;
-          cart = cart - amount;
-        } else {
-          amount = cart;
-          cart = cart - amount;
-        }
-      }
-      console.log(amount);
-    }
-  });
+  let label1 = document.getElementById("5-6");
+  let label2 = document.getElementById("7-8");
 
-  //перебираем корзину
-  label.forEach((x) => {
-    console.log(x.id);
+  basket.map((el) => {
+    let cart = el.cart;
+    let search = el.dataDelivery.find((y) => y.data === label1.id) || [];
+    let search2 = el.dataDelivery.find((y) => y.data === label2.id) || [];
+    console.log(search);
+    console.log(search2);
+    let amount = 0;
+    if (cart <= search.count) {
+      amount = cart;
+      cart = cart - amount;
+    } else {
+      amount = search.count;
+      cart = cart - amount;
+    }
+    console.log(amount);
+    console.log(cart);
+    if (amount > 0) {
+      label1.innerHTML += `
+              <div style='width: 40px;
+              height: 56px;
+              border-radius: 8px;
+              background: linear-gradient(0deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.05) 100%), url(${
+                el.img
+              }) 100% / cover no-repeat, lightgray 50% / cover no-repeat;
+              '/>${
+                amount > 1 ? `<div class="deliveryAmount">${amount}</div>` : ""
+              }</div>`;
+    }
+
+    if (cart <= search2.count) {
+      amount = cart;
+      cart = cart - amount;
+    } else {
+      amount = search2.count;
+      cart = cart - amount;
+    }
+    console.log(amount);
+    console.log(cart);
+    if (amount > 0) {
+      label2.innerHTML += `
+              <div style='width: 40px;
+              height: 56px;
+              border-radius: 8px;
+              background: linear-gradient(0deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.05) 100%), url(${
+                el.img
+              }) 100% / cover no-repeat, lightgray 50% / cover no-repeat;
+              '/>${
+                amount > 1 ? `<div class="deliveryAmount">${amount}</div>` : ""
+              }</div>`;
+    }
   });
 }

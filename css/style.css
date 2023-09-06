@@ -159,7 +159,7 @@ body {
   line-height: 24px;
 }
 
-::-webkit-input-placeholder {
+.search::-webkit-input-placeholder {
   color: var(--system-white, #fff);
   opacity: 0.5;
 }
