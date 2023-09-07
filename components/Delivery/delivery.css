@@ -93,6 +93,15 @@
   position: relative;
 }
 
+.Input small {
+  color: crimson;
+  visibility: hidden;
+}
+
+.Input.error small {
+  visibility: visible;
+}
+
 .Input-text {
   display: block;
   margin: 0;

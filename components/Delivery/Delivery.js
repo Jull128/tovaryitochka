@@ -49,8 +49,9 @@ class Delivery {
         <div class='form_line'>
         <div class='form_input_container'>
             <div class="Input">
-                <input type="text" id="input" class="Input-text" placeholder="Имя">
+                <input type="text" id="name" onChange="checkUser()" value="" class="Input-text" placeholder="Имя">
                 <label for="input" class="Input-label">Имя</label>
+                <small>Error</small>
             </div>
 
         </div>
@@ -71,8 +72,9 @@ class Delivery {
   </div>
   <div class='form_input_container'>
       <div class="Input">
-          <input type="text" id="tel" onkeydown='phoneNumberFormatter()' class="Input-text tel" placeholder="Телефон">
+          <input type="text" id="phone" onchange="checkPhone()" value='+7' class="Input-text tel" placeholder="Телефон">
           <label for="input"  class="Input-label">Телефон</label>
+          <small>Error</small>
       </div>
   </div>
   <div class='form_input_container'>
@@ -100,40 +102,97 @@ deliveryPage.render();
 
 // const createPhone = (str) => str.replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3");
 
-const createPhone = (v) => {
-  if (!v) return v;
-  const phoneNumber = v.replace(/[^\d]/g, "");
-  const phoneNumberLength = phoneNumber.length;
-  if (phoneNumberLength < 2) {
-    return `${phoneNumber.slice(0, 1)}`;
-  }
-  if (phoneNumberLength < 4) {
-    return `${phoneNumber.slice(0, 1)} ${phoneNumber.slice(1)}`;
-  }
-  if (phoneNumberLength < 7) {
-    return `${phoneNumber.slice(0, 1)} ${phoneNumber.slice(
-      1,
-      4
-    )} ${phoneNumber.slice(4, 7)}`;
-  }
-  if (phoneNumberLength < 9) {
-    return `${phoneNumber.slice(0, 1)} ${phoneNumber.slice(
-      1,
-      4
-    )} ${phoneNumber.slice(4, 7)}-${phoneNumber.slice(7, 9)}`;
-  }
+// const createPhone = (v) => {
+//   if (!v) return v;
 
-  return `${phoneNumber.slice(0, 1)} ${phoneNumber.slice(
-    1,
-    4
-  )} ${phoneNumber.slice(4, 7)}-${phoneNumber.slice(7, 9)}-${phoneNumber.slice(
-    9,
-    11
-  )}`;
-};
+//   const phoneNumber = v.replace(/[^\d]/g, "");
+//   const phoneNumberLength = phoneNumber.length;
 
-const phoneNumberFormatter = () => {
-  const inputField = document.getElementById("tel");
-  const formattedInputValue = createPhone(inputField.value);
-  inputField.value = formattedInputValue;
-};
+//   if (phoneNumberLength < 2) {
+//     return `+ ${phoneNumber.slice(0, 1)}`;
+//   }
+//   if (phoneNumberLength < 4) {
+//     return `+ ${phoneNumber.slice(0, 1)} ${phoneNumber.slice(1)}`;
+//   }
+//   if (phoneNumberLength < 7) {
+//     return `+ ${phoneNumber.slice(0, 1)} ${phoneNumber.slice(
+//       1,
+//       4
+//     )} ${phoneNumber.slice(4, 7)}`;
+//   }
+//   if (phoneNumberLength < 9) {
+//     return `+ ${phoneNumber.slice(0, 1)} ${phoneNumber.slice(
+//       1,
+//       4
+//     )} ${phoneNumber.slice(4, 7)}-${phoneNumber.slice(7, 9)}`;
+//   }
+
+//   return `+ ${phoneNumber.slice(0, 1)} ${phoneNumber.slice(
+//     1,
+//     4
+//   )} ${phoneNumber.slice(4, 7)}-${phoneNumber.slice(7, 9)}-${phoneNumber.slice(
+//     9
+//   )}`;
+// };
+
+// const phoneNumberFormatter = () => {
+//   const inputField = document.getElementById("phone");
+//   const formattedInputValue = createPhone(inputField.value);
+//   inputField.value = formattedInputValue;
+// };
+
+const username = document.getElementById("name");
+const phone = document.getElementById("phone");
+
+function checkUser() {
+  // trim to remove the whitespaces
+  const usernameValue = username.value.trim();
+
+  if (usernameValue === "") {
+    setErrorFor(username, "Укажите имя");
+  } else {
+    setSuccessFor(username);
+  }
+}
+
+function checkPhone() {
+  // trim to remove the whitespaces
+  const phoneValue = phone.value.trim();
+
+  if (phoneValue === "") {
+    setErrorFor(phone, "пусто");
+  } else if (!isPhone(phoneValue)) {
+    setErrorFor(phone, "Формат: +9 999 999 99 99");
+  } else if (isPhone(phoneValue)) {
+    phone.value = phoneValue.replace(
+      /(\+7{1})(\d{3})(\d{3})(\d{2})(\d{2})/,
+      "$1 $2 $3-$4-$5"
+    );
+    setSuccessFor(phone);
+  } else {
+    setSuccessFor(phone);
+  }
+}
+
+function setErrorFor(input, message) {
+  const formControl = input.parentElement;
+  const small = formControl.querySelector("small");
+  formControl.className = "Input error";
+  small.innerText = message;
+}
+
+function setSuccessFor(input) {
+  const formControl = input.parentElement;
+  const small = formControl.querySelector("small");
+  formControl.className = "Input";
+}
+
+function isEmail(email) {
+  return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+    email
+  );
+}
+
+function isPhone(phone1) {
+  return /^((\+7)+([0-9]){10})$/.test(phone1);
+}
