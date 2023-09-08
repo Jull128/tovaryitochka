@@ -14,6 +14,8 @@ class Products {
         size,
         sortingCenter,
         availability,
+        OGRN,
+        adress,
       }) => {
         htmlCatalog += `
           <li key='${id}' class="products__item">
@@ -37,7 +39,14 @@ class Products {
                 </div>
                 <div class="item__sortingCenter">
                   <p>Коледино WB</p>
-                  <p>${sortingCenter} <span></span></p>
+                  <p>${sortingCenter} 
+                    <span class="item__sortingCenter_icon"> 
+                      <span class="coupontooltip">
+                        <span>${sortingCenter}</span>  <br>
+                        <span>${OGRN}</span>  <br>
+                        <span>${adress}</span> 
+                      </span>
+                    </span></p>
                 </div>
               </div>
             </div>

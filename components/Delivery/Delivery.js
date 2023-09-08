@@ -23,7 +23,10 @@ class Delivery {
             </div>
         </div>
     </div>
-    <div>
+    <div style="
+    display: flex;
+    gap: 8px;
+">
     <img src='img/icons/price_shipping.svg' alt='' />
     <p>Обратная доставка товаров на склад при отказе — <span class="free-shipping-text ">бесплатно</span></p>
     </div>
@@ -34,12 +37,12 @@ class Delivery {
     <h2>Способ оплаты</h2>
     <h4 onclick='openModalCard()' style='color: var(--system-magenta, #CB11AB); cursor: pointer;'>Изменить</h4>
     </div>
-        <div name='cardchoose' style='height: 24px; 
+        <div name='cardchoose'  id='cardchooseDel' style='height: 24px; 
         display: flex;
         align-items: center;
         gap: 8px;
         margin: 16px 0 8px 0
-        '></div>
+        '> 01/30</div>
         <p class="caption" style='color: var(--system-gray, #A0A0A4);'>Спишем оплату с карты при получении</p>
     </div>
 </div>
@@ -94,7 +97,7 @@ class Delivery {
 
     ROOT_DELIVERY.innerHTML = htmlCatalog;
     isAdressChoose();
-    isCardChoose();
+    isCardChooseDel();
     htmlDeliverytest();
   }
 }
@@ -156,6 +159,7 @@ function checkTax() {
     const formControl = tax.parentElement;
     const small = formControl.querySelector("small");
     formControl.className = "Input success";
+    tax.className = "Input-text";
     small.innerText = `Для таможенного оформления`;
   }
 }

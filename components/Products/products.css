@@ -126,8 +126,9 @@
 }
 
 .item__sortingCenter > p {
+  display: flex;
   margin: 0;
-  white-space: pre-line;
+  white-space: nowrap;
   color: var(--system-gray, #a0a0a4);
   font-size: 13px;
   font-style: normal;
@@ -135,9 +136,34 @@
   line-height: 16px;
 }
 
-.item__sortingCenter > p > span {
+.item__sortingCenter_icon {
   width: 100%;
-  background: url(/img/icons/info.svg) no-repeat;
+  position: relative;
+  top: 1px;
+  background: url(/img/icons/info.svg) 5% / contain no-repeat;
+  cursor: pointer;
+}
+
+.item__sortingCenter_icon:hover .coupontooltip {
+  /* NEW */
+  display: block;
+}
+
+.coupontooltip {
+  display: none;
+  /* NEW */
+  background-color: white;
+  filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.3))
+    drop-shadow(0px 2px 10px rgba(0, 0, 0, 0.15));
+  border-radius: 10px;
+  top: 21px;
+  right: -29px;
+  padding: 10px;
+  position: absolute;
+  white-space: wrap;
+  z-index: 1000;
+  width: 280px;
+  height: 104px;
 }
 
 .countainer__counter_price {

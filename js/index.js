@@ -83,13 +83,14 @@ let calculation = () => {
 calculation();
 
 // расчет новой цены
-let countPrice = (prrice, cart) => {
-  let length = String(prrice).length;
+let countPrice = (price, cart) => {
+  let length = String(price).length;
+  price = (price * cart).toLocaleString("ru");
 
   if (length < 4) {
-    return `<h3 id='newPrice' class="item__newPrice">${prrice * cart}</h3>`;
+    return `<h3 id='newPrice' class="item__newPrice">${price}</h3>`;
   } else {
-    return `<h4 id='newPrice' class="item__newPrice">${prrice * cart}</h4>`;
+    return `<h4 id='newPrice' class="item__newPrice">${price}</h4>`;
   }
 };
 
@@ -135,7 +136,12 @@ function isCheck(id) {
 // КОРЗИНА
 // общая стоимость корзины
 let TotalPrice = () => {
+  const check = document.getElementById("checkcard");
+  const order = document.getElementById("order_button");
   let label = document.getElementById("order__price");
+  console.log("wow");
+
+  console.log(check.checked);
   if (basket.length !== 0) {
     let amount = basket
       .map((x) => {
@@ -147,8 +153,12 @@ let TotalPrice = () => {
           return 0;
         }
       })
-      .reduce((x, y) => x + y, 0);
+      .reduce((x, y) => x + y, 0)
+      .toLocaleString("ru");
     label.innerHTML = `${amount} сом`;
+    if (check.checked) {
+      order.innerHTML = `Оплатить ${amount} сом`;
+    } else order.innerHTML = `Заказать`;
   }
 };
 
@@ -166,7 +176,8 @@ let TotalProducts = () => {
           return 0;
         }
       })
-      .reduce((x, y) => x + y, 0);
+      .reduce((x, y) => x + y, 0)
+      .toLocaleString("ru");
     // склонение окончаний
     let declOfNum = (n) => {
       n = Math.abs(amount) % 100;
@@ -201,7 +212,8 @@ let TotalOldPrice = () => {
           return 0;
         }
       })
-      .reduce((x, y) => x + y, 0);
+      .reduce((x, y) => x + y, 0)
+      .toLocaleString("ru");
     label.innerHTML = `${amount} сом`;
   }
 };
@@ -220,7 +232,8 @@ let TotalDiscount = () => {
           return 0;
         }
       })
-      .reduce((x, y) => x + y, 0);
+      .reduce((x, y) => x + y, 0)
+      .toLocaleString("ru");
     label.innerHTML = `−${amount} сом`;
   }
 };
@@ -366,8 +379,7 @@ function isCheckedCardEdit() {
 }
 
 let isCardChoose = () => {
-  let label = document.getElementsByName("cardchoose");
-
+  let label = document.getElementById("cardchoose");
   if (card.length !== 0) {
     let amount = card
       .map((x) => {
@@ -378,9 +390,23 @@ let isCardChoose = () => {
         }
       })
       .join("");
-    label.forEach((x) => {
-      x.innerHTML = `${amount}`;
-    });
+    label.innerHTML = `${amount}`;
+  }
+};
+
+let isCardChooseDel = () => {
+  let label2 = document.getElementById("cardchooseDel");
+  if (card.length !== 0) {
+    let amount2 = card
+      .map((x) => {
+        let { id } = x;
+        let search = card.find((y) => y.id === id) || [];
+        if (search.checked) {
+          return `<img src='${search.img}' class='order_cardImg'/>${search.name} &nbsp; ${search.data}`;
+        }
+      })
+      .join("");
+    label2.innerHTML = `${amount2}`;
   }
 };
 

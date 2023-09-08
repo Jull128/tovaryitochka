@@ -11,10 +11,6 @@ const CATALOG = [
     size: 56,
     sortingCenter: "OOO Вайлдберриз",
     checked: false,
-    dataDel: {
-      "5-6": 3,
-      "7-8": 1,
-    },
     dataDelivery: [
       {
         data: "5-6",
@@ -37,11 +33,10 @@ const CATALOG = [
     color: "прозрачный",
     size: "",
     sortingCenter: "OOO Мегапрофстиль",
+    OGRN: "ОГРН: 5167746237148",
+    adress:
+      "129337, Москва, улица Красная Сосна, 2, корпус 1, стр. 1, помещение 2, офис 34",
     checked: false,
-    dataDel: {
-      "5-6": 184,
-      "7-8": 16,
-    },
     dataDelivery: [
       {
         data: "5-6",
@@ -65,11 +60,6 @@ const CATALOG = [
     size: "",
     sortingCenter: "OOO Вайлдберриз",
     checked: false,
-    dataDel: {
-      "5-6": 2,
-      "7-8": 1,
-    },
-
     dataDelivery: [
       {
         data: "5-6",
@@ -120,23 +110,27 @@ const CARD = [
     name: "1234 56•• •••• 1234",
     img: "img/icons/mir.svg",
     checked: true,
+    data: "01/30",
   },
   {
     id: "card2",
     name: "1234 56•• •••• 1234",
     img: "img/icons/visa.svg",
     checked: false,
+    data: "01/30",
   },
   {
     id: "card3",
     name: "1234 56•• •••• 1234",
     img: "img/icons/mastercard.svg",
     checked: false,
+    data: "01/30",
   },
   {
     id: "card4",
     name: "1234 56•• •••• 1234",
     img: "img/icons/maestro.svg",
     checked: false,
+    data: "01/30",
   },
 ];
