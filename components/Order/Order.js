@@ -35,13 +35,9 @@ class Order {
                         <div class="free-shipping">
                             <div class="refund-info">
                             Обратная доставка товаров на склад при отказе —
-                                <div style="
-                                height: 100%;
-                                display: flex;
-                                flex-direction: column;">
-                                    <p class="free-shipping-text">бесплатно</p>
-                                    <div class="delivery-info-divider"></div>
-                                </div>
+
+                                    <span class="free-shipping-text">бесплатно</span>
+
                             </div>
                         </div>
 
@@ -67,6 +63,7 @@ class Order {
             </div>
             <div class='order__section'>
             <button class='order_button'>Заказать</button>
+            <p class="order__oferta-access">Соглашаюсь с <span>правилами пользования торговой площадкой</span> и <span>возврата</span> </p>
             </div>
         </div>
           `;

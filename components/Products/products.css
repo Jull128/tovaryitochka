@@ -135,6 +135,11 @@
   line-height: 16px;
 }
 
+.item__sortingCenter > p > span {
+  width: 100%;
+  background: url(/img/icons/info.svg) no-repeat;
+}
+
 .countainer__counter_price {
   display: flex;
   width: 226px;

@@ -426,7 +426,10 @@ function htmlDeliverytest() {
   //получем два элемента с датами в html
   let label1 = document.getElementById("5-6");
   let label2 = document.getElementById("7-8");
-
+  let p1 = document.getElementById("p_5-6");
+  let p2 = document.getElementById("p_7-8");
+  let del1 = false;
+  let del2 = false;
   basket.map((el) => {
     let cart = el.cart;
     let search = el.dataDelivery.find((y) => y.data === label1.id) || [];
@@ -444,6 +447,7 @@ function htmlDeliverytest() {
     console.log(amount);
     console.log(cart);
     if (amount > 0) {
+      del1 = true;
       label1.innerHTML += `
               <div style='width: 40px;
               height: 56px;
@@ -466,6 +470,7 @@ function htmlDeliverytest() {
     console.log(amount);
     console.log(cart);
     if (amount > 0) {
+      del2 = true;
       label2.innerHTML += `
               <div style='width: 40px;
               height: 56px;
@@ -478,4 +483,14 @@ function htmlDeliverytest() {
               }</div>`;
     }
   });
+  if (del1) {
+    p1.className = "delivery__info_label height";
+    p1.innerHTML += `
+  5—6 февраля`;
+  }
+  if (del2) {
+    p2.className = "delivery__info_label height";
+    p2.innerHTML += `
+  7—8 февраля`;
+  }
 }

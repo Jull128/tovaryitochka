@@ -37,7 +37,7 @@ class Products {
                 </div>
                 <div class="item__sortingCenter">
                   <p>Коледино WB</p>
-                  <p>${sortingCenter}</p>
+                  <p>${sortingCenter} <span></span></p>
                 </div>
               </div>
             </div>

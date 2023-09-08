@@ -12,8 +12,8 @@ class Delivery {
             <div class='delivery__info_line'>
                 <p class='delivery__info_label'>Пункт выдачи</p>
                 <p class='delivery__info_label'>Стоимость доставки</p>
-                <p class='delivery__info_label' style="height: 56px">5—6 февраля</p>
-                <p class='delivery__info_label' style="height: 56px">7—8 февраля</p>
+                <p id='p_5-6' class='delivery__info_label'></p>
+                <p id='p_7-8' class='delivery__info_label'></p>
             </div>
             <div class='delivery__info_line'>
                 <p name='adresschoose'></p>
@@ -25,7 +25,7 @@ class Delivery {
     </div>
     <div>
     <img src='img/icons/price_shipping.svg' alt='' />
-    <p>Обратная доставка товаров на склад при отказе — бесплатно</p>
+    <p>Обратная доставка товаров на склад при отказе — <span class="free-shipping-text ">бесплатно</span></p>
     </div>
 </div>
 <div class='delivery__section'>
@@ -66,21 +66,23 @@ class Delivery {
       <div class='form_line'>
       <div class='form_input_container'>
       <div class="Input">
-          <input type="text" id="input" class="Input-text" placeholder="Почта">
+          <input type="text" id="email" onchange="checkEmail()" class="Input-text" placeholder="Почта">
           <label for="input" class="Input-label">Почта</label>
+          <small>Error</small>
       </div>
   </div>
   <div class='form_input_container'>
       <div class="Input">
-          <input type="text" id="phone" onchange="checkPhone()" value='+7' class="Input-text tel" placeholder="Телефон">
+          <input type="text" id="phone"  maxlength="30" onchange="checkPhone()" value='+7' class="Input-text tel" placeholder="Телефон">
           <label for="input"  class="Input-label">Телефон</label>
           <small>Error</small>
       </div>
   </div>
   <div class='form_input_container'>
-  <div class="Input">
-      <input type="text" id="input" class="Input-text" placeholder="ИНН">
+  <div class="Input success">
+      <input type="text" id="tax" onchange="checkTax()" class="Input-text" placeholder="ИНН">
       <label for="input" class="Input-label">ИНН</label>
+      <small>Для таможенного оформления</small>
   </div>
 </div>
         </div>
@@ -100,49 +102,10 @@ class Delivery {
 const deliveryPage = new Delivery();
 deliveryPage.render();
 
-// const createPhone = (str) => str.replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3");
-
-// const createPhone = (v) => {
-//   if (!v) return v;
-
-//   const phoneNumber = v.replace(/[^\d]/g, "");
-//   const phoneNumberLength = phoneNumber.length;
-
-//   if (phoneNumberLength < 2) {
-//     return `+ ${phoneNumber.slice(0, 1)}`;
-//   }
-//   if (phoneNumberLength < 4) {
-//     return `+ ${phoneNumber.slice(0, 1)} ${phoneNumber.slice(1)}`;
-//   }
-//   if (phoneNumberLength < 7) {
-//     return `+ ${phoneNumber.slice(0, 1)} ${phoneNumber.slice(
-//       1,
-//       4
-//     )} ${phoneNumber.slice(4, 7)}`;
-//   }
-//   if (phoneNumberLength < 9) {
-//     return `+ ${phoneNumber.slice(0, 1)} ${phoneNumber.slice(
-//       1,
-//       4
-//     )} ${phoneNumber.slice(4, 7)}-${phoneNumber.slice(7, 9)}`;
-//   }
-
-//   return `+ ${phoneNumber.slice(0, 1)} ${phoneNumber.slice(
-//     1,
-//     4
-//   )} ${phoneNumber.slice(4, 7)}-${phoneNumber.slice(7, 9)}-${phoneNumber.slice(
-//     9
-//   )}`;
-// };
-
-// const phoneNumberFormatter = () => {
-//   const inputField = document.getElementById("phone");
-//   const formattedInputValue = createPhone(inputField.value);
-//   inputField.value = formattedInputValue;
-// };
-
 const username = document.getElementById("name");
 const phone = document.getElementById("phone");
+const email = document.getElementById("email");
+const tax = document.getElementById("tax");
 
 function checkUser() {
   // trim to remove the whitespaces
@@ -159,9 +122,7 @@ function checkPhone() {
   // trim to remove the whitespaces
   const phoneValue = phone.value.trim();
 
-  if (phoneValue === "") {
-    setErrorFor(phone, "пусто");
-  } else if (!isPhone(phoneValue)) {
+  if (!isPhone(phoneValue)) {
     setErrorFor(phone, "Формат: +9 999 999 99 99");
   } else if (isPhone(phoneValue)) {
     phone.value = phoneValue.replace(
@@ -174,17 +135,43 @@ function checkPhone() {
   }
 }
 
+function checkEmail() {
+  // trim to remove the whitespaces
+  const emailValue = email.value.trim();
+
+  if (!isEmail(emailValue)) {
+    setErrorFor(email, "Проверьте адрес электронной почты");
+  } else {
+    setSuccessFor(email);
+  }
+}
+
+function checkTax() {
+  // trim to remove the whitespaces
+  const taxValue = tax.value.trim();
+
+  if (taxValue.length < 14) {
+    setErrorFor(tax, "Проверьте ИНН");
+  } else {
+    const formControl = tax.parentElement;
+    const small = formControl.querySelector("small");
+    formControl.className = "Input success";
+    small.innerText = `Для таможенного оформления`;
+  }
+}
+
 function setErrorFor(input, message) {
   const formControl = input.parentElement;
   const small = formControl.querySelector("small");
   formControl.className = "Input error";
+  input.className = "Input-text error";
   small.innerText = message;
 }
 
 function setSuccessFor(input) {
   const formControl = input.parentElement;
-  const small = formControl.querySelector("small");
   formControl.className = "Input";
+  input.className = "Input-text";
 }
 
 function isEmail(email) {

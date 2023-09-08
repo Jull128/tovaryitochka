@@ -39,6 +39,10 @@
   line-height: 24px;
 }
 
+.delivery__info_label.height {
+  height: 56px;
+}
+
 .delivery__title {
   width: 100%;
   display: flex;
@@ -94,11 +98,18 @@
 }
 
 .Input small {
-  color: crimson;
+  font-size: 12px;
   visibility: hidden;
 }
 
 .Input.error small {
+  color: #f55123;
+  visibility: visible;
+}
+
+.Input.success small {
+  color: black;
+
   visibility: visible;
 }
 
@@ -115,6 +126,12 @@
   border: none;
   border-bottom: 1px solid #b0bec5;
   transition: box-shadow var(--transitionDuration);
+}
+
+.Input-text.error {
+  color: #f55123;
+  border: none;
+  border-bottom: 1px solid #f55123;
 }
 
 .Input-text::placeholder {
