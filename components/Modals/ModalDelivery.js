@@ -11,7 +11,7 @@ function openModal() {
     htmlCatalogDelivery += `
         <label class="checkbox-btn">
             <input type="radio" name='checkDel' id='${id}' class='input__delivery'>
-            <span>${name}</span>
+            <span class='caption-700'>${name}</span>
         </label>
   `;
   });
@@ -23,8 +23,8 @@ function openModal() {
        <input class='input__adress' name='checkAdr'  type='radio' id='${id}' />
        <span></span>
     </label>
-       <p class='modal__adress_p' >${name}</p>
-       <img style="margin: 0 2px" src='img/icons/trashcan.svg'/>
+       <p class='modal__adress_p capton-400' >${name}</p>
+       <button class='trash'></button>
        </div>
   `;
   });

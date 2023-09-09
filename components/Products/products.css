@@ -71,7 +71,7 @@
   border-radius: 6px;
   background-repeat: no-repeat;
   background-position: center center;
-  cursor: pointer;
+  cursor: url(/img/icons/cursor.svg), pointer;
 }
 
 .item__checkbox:checked + label::before {
@@ -113,9 +113,6 @@
 }
 
 .item__properties > span {
-  font-size: 13px;
-  font-weight: 400;
-  line-height: 16px;
   margin: 0;
 }
 
@@ -125,26 +122,49 @@
   gap: 4px;
 }
 
-.item__sortingCenter > p {
+.item__sortingCenter > p,
+.info_about_sortingcenter > p {
   display: flex;
   margin: 0;
   white-space: nowrap;
   color: var(--system-gray, #a0a0a4);
-  font-size: 13px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 16px;
+}
+
+.info_about_sortingcenter {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
 }
 
 .item__sortingCenter_icon {
-  width: 100%;
+  width: 20px;
+  height: 20px;
   position: relative;
   top: 1px;
-  background: url(/img/icons/info.svg) 5% / contain no-repeat;
-  cursor: pointer;
+  background: url(/img/icons/info.svg) 0% / contain no-repeat;
+  cursor: url(/img/icons/cursor.svg), pointer;
 }
 
-.item__sortingCenter_icon:hover .coupontooltip {
+.tooltip_container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tooltip_line {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.tooltip_line > p {
+  white-space: nowrap;
+}
+
+.item__sortingCenter_icon:hover .coupontooltip,
+.free-shipping-text:hover .coupontooltip,
+.item__oldPrice_line:hover .coupontooltipOldprice {
   /* NEW */
   display: block;
 }
@@ -156,14 +176,40 @@
   filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.3))
     drop-shadow(0px 2px 10px rgba(0, 0, 0, 0.15));
   border-radius: 10px;
-  top: 21px;
-  right: -29px;
-  padding: 10px;
+  top: 25px;
+  color: black;
+  left: -129px;
+  padding: 11px 16px 13px 16px;
   position: absolute;
   white-space: wrap;
   z-index: 1000;
   width: 280px;
   height: 104px;
+}
+
+.free-shipping-text > .coupontooltip {
+  top: 300px;
+  left: 14px;
+  width: 370px;
+  height: 32px;
+}
+
+.coupontooltipOldprice {
+  display: none;
+  /* NEW */
+  background-color: white;
+  filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.3))
+    drop-shadow(0px 2px 10px rgba(0, 0, 0, 0.15));
+  border-radius: 10px;
+  top: 25px;
+  color: black;
+  right: 0;
+  padding: 11px 16px 13px 16px;
+  position: absolute;
+  white-space: wrap;
+  z-index: 1000;
+  min-width: 207px;
+  height: 40px;
 }
 
 .countainer__counter_price {
@@ -214,6 +260,7 @@
 .item__newPrice {
   margin: 0;
   position: relative;
+  padding-top: 4px;
 }
 
 .item__oldPrice_container {
@@ -224,33 +271,19 @@
   margin: 0;
   background: 0px 9px url(/img/icons/line.svg) no-repeat;
   color: #a0a0a4;
-  font-size: 13px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 16px;
 }
 
 .item__oldPrice_line {
-  position: absolute;
-  bottom: 0px;
-  width: 110%;
-  bottom: 6px;
-  right: -2px;
-}
-
-.item__oldPrice_line > img {
-  stroke-width: 1px;
-  height: 0px;
-  stroke: #a0a0a4;
+  padding-bottom: 3px;
+  background-image: url(/img/icons/VectorGray.svg);
+  background-repeat: repeat-x;
+  background-position: center bottom;
+  cursor: url(/img/icons/cursor.svg), pointer;
 }
 
 .countainer__counter_availability {
   width: 100px;
   color: var(--dark-system-coral, #ff3b30);
-  font-size: 13px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 16px;
 }
 
 .btn_lovely_remove {
@@ -264,11 +297,18 @@
   width: 20px;
   height: 20px;
   border: none;
+  cursor: url(/img/icons/cursor.svg), pointer;
 }
 
 .heart {
   background: url(/img/icons/heart.svg);
 }
+.heart:hover {
+  background: url(/img/icons/heartActive.svg);
+}
 .trash {
   background: url(/img/icons/trashcan.svg);
+}
+.trash:hover {
+  background: url(/img/icons/trashcanRed.svg);
 }

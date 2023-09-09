@@ -10,25 +10,34 @@ class Delivery {
         </div>
         <div class='delivery__info'>
             <div class='delivery__info_line'>
-                <p class='delivery__info_label'>Пункт выдачи</p>
-                <p class='delivery__info_label'>Стоимость доставки</p>
-                <p id='p_5-6' class='delivery__info_label'></p>
-                <p id='p_7-8' class='delivery__info_label'></p>
+                <p class='delivery__info_label caption-600'>Пункт выдачи</p>
+                <p class='delivery__info_label caption-600'>Стоимость доставки</p>
+                <p id='p_5-6' class='delivery__info_label caption-600'></p>
+                <p id='p_7-8' class='delivery__info_label caption-600'></p>
             </div>
             <div class='delivery__info_line'>
+            <div>
                 <p name='adresschoose'></p>
+                <p><img src="img/icons/star_fill.svg"/>&nbsp;4.99 Ежедневно с 10 до 21 </p>
+                </div>
                 <p>Бесплатно</p>
                 <div id='5-6' name='htmlDelivery' style='display: flex; gap: 8px; position: relative;'></div>
                 <div id='7-8' name='htmlDelivery' style='display: flex; gap: 8px; position: relative;'></div>
             </div>
         </div>
     </div>
-    <div style="
-    display: flex;
-    gap: 8px;
-">
-    <img src='img/icons/price_shipping.svg' alt='' />
-    <p>Обратная доставка товаров на склад при отказе — <span class="free-shipping-text ">бесплатно</span></p>
+    <div style="display: flex; gap: 8px;">
+      <img src='img/icons/price_shipping.svg' alt='' />
+      <div>
+    <div style="display: flex; position: relative;">
+    <p>Обратная доставка товаров на склад при отказе — &nbsp;</p>
+          <div class="free-shipping-text-del">бесплатно
+            <div class="coupontooltidel caption">
+                Если товары вам не подойдут, мы вернем их обратно на склад — это бесплатно
+            </div>  
+          </div>
+      </div>
+      </div>
     </div>
 </div>
 <div class='delivery__section'>
@@ -52,39 +61,39 @@ class Delivery {
         <div class='form_line'>
         <div class='form_input_container'>
             <div class="Input">
-                <input type="text" id="name" onChange="checkUser()" value="" class="Input-text" placeholder="Имя">
-                <label for="input" class="Input-label">Имя</label>
+                <input type="text" id="name" onChange="checkUser()" value="" class="Input-text caption-400" placeholder="Имя">
+                <label for="name" class="Input-label">Имя</label>
                 <small>Error</small>
             </div>
 
         </div>
         <div class='form_input_container'>
             <div class="Input">
-                <input type="text" id="input" class="Input-text" placeholder="Фамилия">
-                <label for="input" class="Input-label">Фамилия</label>
-
+                <input type="text" id="sername" class="Input-text caption-400" placeholder="Фамилия">
+                <label for="sername" class="Input-label">Фамилия</label>
+                <small>Error</small>
             </div>
         </div>
       </div>
       <div class='form_line'>
       <div class='form_input_container'>
       <div class="Input">
-          <input type="text" id="email" onchange="checkEmail()" class="Input-text" placeholder="Почта">
-          <label for="input" class="Input-label">Почта</label>
+          <input type="text" id="email" onchange="checkEmail()" class="Input-text caption-400" placeholder="Почта">
+          <label for="email" class="Input-label">Почта</label>
           <small>Error</small>
       </div>
   </div>
   <div class='form_input_container'>
       <div class="Input">
-          <input type="text" id="phone"  maxlength="30" onchange="checkPhone()" value='+7' class="Input-text tel" placeholder="Телефон">
-          <label for="input"  class="Input-label">Телефон</label>
+          <input type="text" id="phone"  maxlength="30" onchange="checkPhone()" value='+7' class="Input-text caption-400 tel" placeholder="Телефон">
+          <label for="phone"  class="Input-label">Телефон</label>
           <small>Error</small>
       </div>
   </div>
   <div class='form_input_container'>
   <div class="Input success">
-      <input type="text" id="tax" onchange="checkTax()" class="Input-text" placeholder="ИНН">
-      <label for="input" class="Input-label">ИНН</label>
+      <input type="text" id="tax" onchange="checkTax()" class="Input-text caption-400" placeholder="ИНН">
+      <label for="tax" class="Input-label">ИНН</label>
       <small>Для таможенного оформления</small>
   </div>
 </div>
@@ -106,20 +115,10 @@ const deliveryPage = new Delivery();
 deliveryPage.render();
 
 const username = document.getElementById("name");
+const usersername = document.getElementById("sername");
 const phone = document.getElementById("phone");
 const email = document.getElementById("email");
 const tax = document.getElementById("tax");
-
-function checkUser() {
-  // trim to remove the whitespaces
-  const usernameValue = username.value.trim();
-
-  if (usernameValue === "") {
-    setErrorFor(username, "Укажите имя");
-  } else {
-    setSuccessFor(username);
-  }
-}
 
 function checkPhone() {
   // trim to remove the whitespaces
@@ -159,8 +158,46 @@ function checkTax() {
     const formControl = tax.parentElement;
     const small = formControl.querySelector("small");
     formControl.className = "Input success";
-    tax.className = "Input-text";
+    tax.className = "Input-text caption-400";
     small.innerText = `Для таможенного оформления`;
+  }
+}
+
+function emptyInput() {
+  const usernameValue = username.value.trim();
+  const usersernameValue = usersername.value.trim();
+  const phoneValue = phone.value.trim();
+  const emailValue = email.value.trim();
+  const taxValue = tax.value.trim();
+
+  if (usernameValue === "") {
+    setErrorFor(username, "Укажите имя");
+  } else {
+    setSuccessFor(username);
+  }
+
+  if (usersernameValue === "") {
+    setErrorFor(usersername, "Укажите фамилию");
+  } else {
+    setSuccessFor(usersername);
+  }
+
+  if (phoneValue.length < 11) {
+    setErrorFor(phone, "Укажите телефон");
+  } else {
+    setSuccessFor(phone);
+  }
+
+  if (emailValue === "") {
+    setErrorFor(email, "Укажите Email");
+  } else {
+    setSuccessFor(email);
+  }
+
+  if (taxValue === "") {
+    setErrorFor(tax, "Укажите ИНН");
+  } else {
+    setSuccessFor(tax);
   }
 }
 
@@ -168,14 +205,14 @@ function setErrorFor(input, message) {
   const formControl = input.parentElement;
   const small = formControl.querySelector("small");
   formControl.className = "Input error";
-  input.className = "Input-text error";
+  input.className = "Input-text caption-400 error";
   small.innerText = message;
 }
 
 function setSuccessFor(input) {
   const formControl = input.parentElement;
   formControl.className = "Input";
-  input.className = "Input-text";
+  input.className = "Input-text caption-400";
 }
 
 function isEmail(email) {

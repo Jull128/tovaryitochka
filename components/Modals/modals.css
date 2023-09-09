@@ -57,17 +57,13 @@
 .checkbox-btn span {
   height: 32px;
   display: flex;
-  cursor: pointer;
+  cursor: url(/img/icons/cursor.svg), pointer;
   justify-content: center;
   align-items: center;
   text-align: center;
   border-radius: 20px;
   border: 2px solid rgba(203, 17, 171, 0.15);
   background: var(--text-white, #fff);
-  font-size: 13px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 16px;
 }
 
 /* Checked */
@@ -113,20 +109,12 @@
   width: 100%;
   max-width: 400px;
   margin-right: auto;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 24px;
   padding: 4px 0px 8px 0px;
 }
 
 .modal__card_p {
   width: 292px;
   margin-right: auto;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 24px;
   padding: 4px 0px 8px 0px;
 }
 
@@ -149,11 +137,12 @@
   font-weight: 700;
   line-height: 16px;
 }
+
 .modal__adress_label span {
   width: 14px;
   height: 14px;
   margin: 0 2px;
-  cursor: pointer;
+  cursor: url(/img/icons/cursor.svg), pointer;
   border-radius: 15px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   background: var(--text-white, #fff);
@@ -178,7 +167,7 @@
   height: 44px;
   font: 700 16px Segoe UI;
   color: white;
-  cursor: pointer;
+  cursor: url(/img/icons/cursor.svg), pointer;
   background: #cb11ab;
   border: none;
   border-radius: 8px;

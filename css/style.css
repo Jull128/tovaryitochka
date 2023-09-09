@@ -37,12 +37,46 @@ h4 {
   margin: 0;
 }
 
+h5 {
+  font-family: Segoe UI;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 16px;
+  margin: 0;
+  text-transform: uppercase;
+}
+
 .caption {
   font-family: Segoe UI;
   font-size: 13px;
   font-style: normal;
   font-weight: 400;
   line-height: 16px;
+}
+
+.caption-400 {
+  font-family: Segoe UI;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.caption-700 {
+  font-family: Segoe UI;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 16px;
+}
+
+.caption-600 {
+  font-family: Segoe UI;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
 }
 
 p {
@@ -180,7 +214,7 @@ body {
   background-position: 0 center;
   border: none;
   padding: 0;
-  cursor: pointer;
+  cursor: url(/img/icons/cursor.svg), pointer;
   transition: opacity 0.3s ease 0s;
   background-image: url(../img/icons/Search.svg);
 }

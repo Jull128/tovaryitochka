@@ -43,7 +43,6 @@ const increment = (id) => {
   update(selected.id);
   productsPage.render();
   isChecked();
-
   deliveryPage.render();
   localStorage.setItem("data", JSON.stringify(basket));
 };
@@ -68,6 +67,7 @@ const decrement = (id) => {
 let update = (id) => {
   let search = basket.find((x) => x.id === id);
   document.getElementById(id).innerHTML = search.cart;
+  isChecked();
   TotalPrice();
   TotalProducts();
   TotalOldPrice();
@@ -96,10 +96,10 @@ let countPrice = (price, cart) => {
 
 // выбор всех чекбоксов
 function toggle(source) {
-  checkAll = document.getElementById("checkAll").checked;
+  let checkAll = document.getElementById("checkAll").checked;
 
-  checkboxes = document.getElementsByName("check");
-  console.log(checkAll);
+  let checkboxes = document.getElementsByName("check");
+
   for (var i = 0, n = checkboxes.length; i < n; i++) {
     checkboxes[i].checked = source.checked;
     let selected = checkboxes[i].id.substr(5);
@@ -112,20 +112,25 @@ function toggle(source) {
 
 // отображение статусов чекбоксов
 function isChecked() {
+  let checkAll = document.getElementById("checkAll");
   let checkboxes = document.getElementsByName("check");
+  let amount = 0;
   for (var i = 0, n = checkboxes.length; i < n; i++) {
     let selected = checkboxes[i].id.substr(5);
     let search = basket.find((x) => x.id === selected);
     if (search.checked) {
+      amount += 1;
       checkboxes[i].checked = true;
     }
   }
+  if (amount === 3) {
+    checkAll.checked = true;
+  } else checkAll.checked = false;
 }
 
 // смена статуса чекбокса товара в ЛС по клику
 function isCheck(id) {
   let checkbox = document.getElementById(`check${id.id}`).checked;
-  console.log(checkbox);
   let selected = id;
   let search = basket.find((x) => x.id === selected.id);
   search.checked = checkbox;
@@ -139,9 +144,6 @@ let TotalPrice = () => {
   const check = document.getElementById("checkcard");
   const order = document.getElementById("order_button");
   let label = document.getElementById("order__price");
-  console.log("wow");
-
-  console.log(check.checked);
   if (basket.length !== 0) {
     let amount = basket
       .map((x) => {
@@ -259,7 +261,7 @@ function isCheckedDel() {
 // отображение статусов чекбоксов при смене чекбокса
 function isCheckedDelEdit() {
   let checkboxes = document.getElementsByName("checkDel");
-  console.log(checkboxes);
+
   for (var i = 0, n = checkboxes.length; i < n; i++) {
     let selected = checkboxes[i].id;
 
@@ -460,8 +462,7 @@ function htmlDeliverytest() {
     let cart = el.cart;
     let search = el.dataDelivery.find((y) => y.data === label1.id) || [];
     let search2 = el.dataDelivery.find((y) => y.data === label2.id) || [];
-    console.log(search);
-    console.log(search2);
+
     let amount = 0;
     if (cart <= search.count) {
       amount = cart;
@@ -470,8 +471,7 @@ function htmlDeliverytest() {
       amount = search.count;
       cart = cart - amount;
     }
-    console.log(amount);
-    console.log(cart);
+
     if (amount > 0) {
       del1 = true;
       label1.innerHTML += `
@@ -493,8 +493,7 @@ function htmlDeliverytest() {
       amount = search2.count;
       cart = cart - amount;
     }
-    console.log(amount);
-    console.log(cart);
+
     if (amount > 0) {
       del2 = true;
       label2.innerHTML += `

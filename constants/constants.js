@@ -10,6 +10,9 @@ const CATALOG = [
     color: "белый",
     size: 56,
     sortingCenter: "OOO Вайлдберриз",
+    OGRN: "ОГРН: 1067746062449",
+    adress:
+      "	142181, Московская область, г.о. Подольск, д Коледино, тер. Индустриальный Парк Коледино, д. 6, стр. 1",
     checked: false,
     dataDelivery: [
       {
@@ -26,8 +29,8 @@ const CATALOG = [
     id: "el2",
     name: "Силиконовый чехол картхолдер (отверстия) для карт, прозрачный кейс бампер на Apple iPhone XR, MobiSafe",
     img: "img/catalog/case.png",
-    oldPrice: 2300047,
-    newPrice: 2100047,
+    oldPrice: 11500.23,
+    newPrice: 10000.23,
     cart: 200,
     availability: 250,
     color: "прозрачный",
@@ -59,6 +62,9 @@ const CATALOG = [
     color: "",
     size: "",
     sortingCenter: "OOO Вайлдберриз",
+    OGRN: "ОГРН: 1067746062449",
+    adress:
+      "	142181, Московская область, г.о. Подольск, д Коледино, тер. Индустриальный Парк Коледино, д. 6, стр. 1",
     checked: false,
     dataDelivery: [
       {
@@ -77,16 +83,19 @@ const ADRESS = [
   {
     id: "adr1",
     name: "Бишкек, улица Табышалиева, 57",
+    rate: 4.99,
     checked: true,
   },
   {
     id: "adr2",
     name: "Бишкек, улица Жукеева-Пудовкина, 77/1",
+    rate: 4.99,
     checked: false,
   },
   {
     id: "adr3",
     name: "Бишкек, микрорайон Джал, улица Ахунбаева Исы, 67/1",
+    rate: 4.99,
     checked: false,
   },
 ];

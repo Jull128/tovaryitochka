@@ -21,7 +21,7 @@ function openModalCard() {
     <img src='${img}' class='order_cardImg'/>
     </div>
 
-       <p class='modal__card_p ' >${name}</p>
+       <p class='modal__card_p caption-400' >${name}</p>
        </div>
   `;
   });

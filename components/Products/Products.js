@@ -34,19 +34,23 @@ class Products {
               <div class="item__description">
                 <span class="item__name">${name}</span>
                 <div class="item__properties">
-                  ${color ? `<span>Цвет: ${color}</span>` : ""}
-                  ${size ? `<span>Размер: ${size}</span>` : ""}
+                  ${color ? `<span class="caption">Цвет: ${color}</span>` : ""}
+                  ${size ? `<span class="caption">Размер: ${size}</span>` : ""}
                 </div>
                 <div class="item__sortingCenter">
-                  <p>Коледино WB</p>
-                  <p>${sortingCenter} 
-                    <span class="item__sortingCenter_icon"> 
-                      <span class="coupontooltip">
-                        <span>${sortingCenter}</span>  <br>
-                        <span>${OGRN}</span>  <br>
-                        <span>${adress}</span> 
-                      </span>
-                    </span></p>
+                  <p class="caption">Коледино WB</p>
+                    <div class="info_about_sortingcenter"> 
+                      <p class="caption">${sortingCenter}</p>
+                      <div class="item__sortingCenter_icon">  
+                        <div class="coupontooltip">
+                          <div class="tooltip_container">
+                            <h5 >${sortingCenter}</h5>
+                            <p class="caption">${OGRN}</p>
+                            <p class="caption">${adress}</p> 
+                            </div>
+                        </div>  
+                      </div>
+                    </div>
                 </div>
               </div>
             </div>
@@ -59,7 +63,7 @@ class Products {
               </div>
               ${
                 availability - cart < 5
-                  ? `<p class='countainer__counter_availability'>
+                  ? `<p class='countainer__counter_availability caption'>
                    Осталось ${availability - cart} шт.</p>`
                   : ""
               }
@@ -75,8 +79,26 @@ class Products {
                   <h4>&nbsp;сом</h4>
                 </div>
                   <div class="item__oldPrice_container">
-                  <div class='item__oldPrice_line'></div>
-                  <p class="item__oldPrice">${oldPrice * cart} сом</p>
+                  <div class='item__oldPrice_line'>
+                    <p class="item__oldPrice caption">${(
+                      oldPrice * cart
+                    ).toLocaleString("ru")} сом</p>                        
+                      <div class="coupontooltipOldprice">
+                        <div class="tooltip_container">
+                          <div class="tooltip_line caption" ><p>Скидка ${Math.round(
+                            ((oldPrice * 0.9 - newPrice) / (oldPrice * 0.9)) *
+                              100
+                          )}%</p><p>−${Math.round(
+          oldPrice * 0.9 - newPrice
+        ).toLocaleString("ru")} сом</p>
+                          </div>
+                        <div class="tooltip_line caption"><p>Скидка покупателя 10%</p><p>−${Math.round(
+                          oldPrice * 0.1
+                        ).toLocaleString("ru")} сом</p></div>
+                        </div>
+                      </div>
+                  </div>  
+                  </div>
               </div>
             </div>
             </div>
@@ -87,7 +109,7 @@ class Products {
 
     const html = `
       <div class='item__checkboxAll_container'>
-        <input type='checkbox' onClick="toggle(this)" class="item__checkbox" id='checkAll'/>
+        <input type='checkbox' onClick="toggle(this)" class="item__checkbox" id='checkAll' />
         <label for='checkAll'></label>
         <p>Выбрать все</p>
       </div>

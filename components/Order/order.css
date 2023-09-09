@@ -54,7 +54,7 @@
   background: center url(/img/icons/pencil.svg) no-repeat;
   border: none;
   width: 20px;
-  cursor: pointer;
+  cursor: url(/img/icons/cursor.svg), pointer;
 }
 .order__delivery_info {
   display: flex;
@@ -64,12 +64,6 @@
   align-self: stretch;
   border-radius: 8px;
   background: var(--background-smoky, #f6f6fa);
-}
-.order__delivery_info > p {
-  font-size: 13px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 16px;
 }
 
 .order__oferta-access {
@@ -119,7 +113,6 @@
 .refund-info {
   box-sizing: border-box;
   flex: 0 1 auto;
-  font: 400 13px/16px Segoe UI;
   color: black;
 }
 
@@ -131,6 +124,7 @@
   background-repeat: no-repeat;
   background-position: center bottom;
   background-size: 100%;
+  cursor: url(/img/icons/cursor.svg), pointer;
 }
 
 .data-shipping-text {
@@ -158,12 +152,14 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
+  margin-top: 12px;
 }
 
 .order_cardImg {
-  height: 100%;
-  width: 32px;
+  height: 22px;
+  width: 30px;
   border-radius: 4px;
+  padding: 1px;
   background: var(--background-smoky, #f6f6fa);
 }
 
@@ -179,7 +175,7 @@
   height: 44px;
   font: 700 16px Segoe UI;
   color: white;
-  cursor: pointer;
+  cursor: url(/img/icons/cursor.svg), pointer;
   background: #cb11ab;
   border: none;
   border-radius: 8px;
@@ -211,12 +207,10 @@
   box-sizing: border-box;
   flex: 0 0 auto;
   margin-left: 7px;
-  font: 400 13px Segoe UI;
   color: black;
 }
 .payment-option-text {
   box-sizing: border-box;
   margin-top: 7px;
-  font: 400 13px Segoe UI;
   color: black;
 }

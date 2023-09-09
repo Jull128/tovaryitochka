@@ -9,7 +9,7 @@ class ProductsInactive {
                     <div style='display: flex; justify-content:center; gap: 12px'>
                         <img src="${img}" class="productsInactive__item_img" />
                     </div>
-                    <div class="productsInactive__item_description">
+                    <div class="productsInactive__item_description caption-400">
                         <span class="item__name">${name}</span>
                         <div class="item__properties">
                             ${color ? `<span>Цвет: ${color}</span>` : ""}
