@@ -19,7 +19,7 @@ function openModal() {
   adress.forEach(({ id, name, checked }) => {
     htmlCatalogAdress += `
     <div class="modal__adress_line">
-    <label class="modal__adress_label">
+    <label class="modal__adress_label" for="${id}">
        <input class='input__adress' name='checkAdr'  type='radio' id='${id}' />
        <span></span>
     </label>
@@ -32,10 +32,13 @@ function openModal() {
   const html = `
     <div class="modal__card">
     <div>
-    <h3>Способ доставки</h3>
-<div class='modal__delivery_checkbox_container'>
-    ${htmlCatalogDelivery}
-    </div>
+    <div style="display: flex; justify-content: space-between">
+      <h3>Способ доставки</h3>
+      <button class="close_button" onclick='closeModal()'></button>
+      </div>
+      <div class='modal__delivery_checkbox_container'>
+        ${htmlCatalogDelivery}
+      </div>
     </div>
     <div class="modal__adress_checkbox_container">
         <p class="signature">Мои адреса</p>

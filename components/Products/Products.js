@@ -20,7 +20,7 @@ class Products {
         htmlCatalog += `
           <li key='${id}' class="products__item">
             <div class="item">
-              <div style='display: flex; justify-content:center; gap: 12px'>
+              <div style='display: flex; justify-content:center; gap: 12px;'>
                 <div class='item__checkbox_container'>
                 <input type='checkbox' name='check' class="item__checkbox" onclick='isCheck(${id})' id='check${id}'/>
                 <label for='check${id}'></label>
@@ -32,11 +32,16 @@ class Products {
                  class="item__img"></div>
               </div>
               <div class="item__description">
-                <span class="item__name">${name}</span>
+                <span class="item__name caption-400">${name}</span>
+                ${
+                  color || size
+                    ? `
                 <div class="item__properties">
                   ${color ? `<span class="caption">Цвет: ${color}</span>` : ""}
                   ${size ? `<span class="caption">Размер: ${size}</span>` : ""}
-                </div>
+                </div>`
+                    : ""
+                }
                 <div class="item__sortingCenter">
                   <p class="caption">Коледино WB</p>
                     <div class="info_about_sortingcenter"> 
@@ -54,11 +59,11 @@ class Products {
                 </div>
               </div>
             </div>
-            <div class="countainer__counter_price">
-<div style='display:flex; flex-direction:column; gap:8px'>
+            <div class="container__counter_price">
+<div style='display:flex; flex-direction:column; gap:8px;'>
               <div class='counter' data-counter>
                 <button class="counter__btn" onclick='decrement(${id})'>−</button>
-                <div class="counter__input" id='${id}'>${cart}</div>
+                <div class="counter__input caption-400" id='${id}'>${cart}</div>
                 <button class="counter__btn" onclick='increment(${id})'>+</button>
               </div>
               ${
@@ -80,19 +85,19 @@ class Products {
                 </div>
                   <div class="item__oldPrice_container">
                   <div class='item__oldPrice_line'>
-                    <p class="item__oldPrice caption">${(
+                    <p class="item__oldPrice caption">${Math.round(
                       oldPrice * cart
                     ).toLocaleString("ru")} сом</p>                        
                       <div class="coupontooltipOldprice">
                         <div class="tooltip_container">
-                          <div class="tooltip_line caption" ><p>Скидка ${Math.round(
+                          <div class="tooltip_line caption" ><p style='color: #A0A0A4'>Скидка ${Math.round(
                             ((oldPrice * 0.9 - newPrice) / (oldPrice * 0.9)) *
                               100
                           )}%</p><p>−${Math.round(
           oldPrice * 0.9 - newPrice
         ).toLocaleString("ru")} сом</p>
                           </div>
-                        <div class="tooltip_line caption"><p>Скидка покупателя 10%</p><p>−${Math.round(
+                        <div class="tooltip_line caption"><p style='color: #A0A0A4'>Скидка покупателя 10%</p><p>−${Math.round(
                           oldPrice * 0.1
                         ).toLocaleString("ru")} сом</p></div>
                         </div>

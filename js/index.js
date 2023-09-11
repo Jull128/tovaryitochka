@@ -85,7 +85,7 @@ calculation();
 // расчет новой цены
 let countPrice = (price, cart) => {
   let length = String(price).length;
-  price = (price * cart).toLocaleString("ru");
+  price = Math.round(price * cart).toLocaleString("ru");
 
   if (length < 4) {
     return `<h3 id='newPrice' class="item__newPrice">${price}</h3>`;
@@ -155,8 +155,8 @@ let TotalPrice = () => {
           return 0;
         }
       })
-      .reduce((x, y) => x + y, 0)
-      .toLocaleString("ru");
+      .reduce((x, y) => x + y, 0);
+    amount = Math.round(amount).toLocaleString("ru");
     label.innerHTML = `${amount} сом`;
     if (check.checked) {
       order.innerHTML = `Оплатить ${amount} сом`;
@@ -214,8 +214,10 @@ let TotalOldPrice = () => {
           return 0;
         }
       })
-      .reduce((x, y) => x + y, 0)
-      .toLocaleString("ru");
+      .reduce((x, y) => x + y, 0);
+
+    amount = Math.round(amount).toLocaleString("ru");
+
     label.innerHTML = `${amount} сом`;
   }
 };
@@ -509,12 +511,12 @@ function htmlDeliverytest() {
     }
   });
   if (del1) {
-    p1.className = "delivery__info_label height";
+    p1.className = "delivery__info_label caption-600 height";
     p1.innerHTML += `
   5—6 февраля`;
   }
   if (del2) {
-    p2.className = "delivery__info_label height";
+    p2.className = "delivery__info_label  caption-600 height";
     p2.innerHTML += `
   7—8 февраля`;
   }

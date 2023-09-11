@@ -121,8 +121,9 @@
 /* Checked */
 .input__adress:checked + span {
   border: 5px solid #cb11ab;
-  width: 6px;
-  height: 6px;
+  width: 16px;
+  height: 16px;
+  margin: 0;
 }
 
 /* Hover */
@@ -172,4 +173,12 @@
   border: none;
   border-radius: 8px;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.close_button {
+  width: 24px;
+  height: 24px;
+  background: url(/img/icons/btnclose.svg);
+  border-style: none;
+  cursor: url(/img/icons/cursor.svg), pointer;
 }

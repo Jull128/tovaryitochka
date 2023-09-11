@@ -29,7 +29,10 @@ function openModalCard() {
   const html = `
   <div class="modal__card">
     <div class="modal__card_checkbox_container">
-        <div style="display: flex; justify-content: space-between"><h3>Способ оплаты</h3> <button onclick='closeModal()'>X</button></div>
+        <div style="display: flex; justify-content: space-between">
+          <h3>Способ оплаты</h3> 
+          <button class="close_button" onclick='closeModal()'></button>
+        </div>
         ${htmlCatalogCard}
         </div>
         <div class='modal__button_container'> 

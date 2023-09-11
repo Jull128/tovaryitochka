@@ -2,7 +2,6 @@
   position: relative;
   top: -12px;
   display: flex;
-  width: 381px;
   padding: 16px 24px 24px 24px;
   flex-direction: column;
   align-items: center;
@@ -67,12 +66,12 @@
 }
 
 .order__oferta-access {
-  font-size: 14px;
   line-height: 20px;
   color: #868695;
   position: relative;
   padding-left: 22px;
   margin-top: 12px;
+  line-height: 16px;
 }
 
 .order__oferta-access::before {
@@ -82,7 +81,7 @@
   z-index: 1;
   width: 17px;
   height: 17px;
-  left: 4px;
+  left: 0px;
   top: 2px;
   background: url(/img/icons/tick.svg) no-repeat;
 }
@@ -142,10 +141,6 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 13px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 16px;
 }
 
 .order__card {
@@ -156,8 +151,8 @@
 }
 
 .order_cardImg {
-  height: 22px;
-  width: 30px;
+  height: 24px;
+  width: 32px;
   border-radius: 4px;
   padding: 1px;
   background: var(--background-smoky, #f6f6fa);
@@ -173,6 +168,7 @@
   display: block;
   width: 100%;
   height: 44px;
+  padding-bottom: 5px;
   font: 700 16px Segoe UI;
   color: white;
   cursor: url(/img/icons/cursor.svg), pointer;
@@ -184,7 +180,7 @@
 .payment-container {
   box-sizing: border-box;
   flex: 0 0 auto;
-  padding: 7px 7px 12px;
+  padding: 8px 8px 12px 8px;
   margin-top: 8px;
   background: #f6f6fa;
   border-radius: 8px;
