@@ -1,3 +1,5 @@
+const mediaQuery = window.matchMedia("(max-width: 320px)");
+console.log(mediaQuery);
 // отображение корзины
 const dataCatalog = () => {
   if (localStorage.getItem("data")) {
@@ -88,7 +90,7 @@ let countPrice = (price, cart) => {
   price = Math.round(price * cart).toLocaleString("ru");
 
   if (length < 4) {
-    return `<h3 id='newPrice' class="item__newPrice">${price}</h3>`;
+    return `<h3 id='newPrice' class="item__newPrice">${price} </h3>`;
   } else {
     return `<h4 id='newPrice' class="item__newPrice">${price}</h4>`;
   }
@@ -506,7 +508,9 @@ function htmlDeliverytest() {
                 el.img
               }) 100% / cover no-repeat, lightgray 50% / cover no-repeat;
               '/>${
-                amount > 1 ? `<div class="deliveryAmount">${amount}</div>` : ""
+                amount > 1
+                  ? `<div class="deliveryAmount"><p>${amount}</p></div>`
+                  : ""
               }</div>`;
     }
   });

@@ -44,13 +44,14 @@
 }
 
 .deliveryAmount {
+  float: right;
   position: relative;
-  top: -15px;
-  left: 22px;
+  top: -8px;
+  right: -5px;
   display: inline-flex;
   height: 16px;
   transform: rotate(0.074deg);
-  padding: 1px 5px 0px 5px;
+  padding: 0px 4px 0px 4px;
   flex-direction: column;
   justify-content: center;
   align-items: center;

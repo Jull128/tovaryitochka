@@ -17,7 +17,59 @@ class Products {
         OGRN,
         adress,
       }) => {
-        htmlCatalog += `
+        {
+          mediaQuery.matches
+            ? (htmlCatalog += `
+          <li key='${id}' class="products__item">
+
+            <div class='list-item__section'>
+              <div class="line"></div>
+                <div class='list-item__wrap'>
+                  <div class="list-item__img">
+                    <div class='item__checkbox_container'>
+                      <input type='checkbox' name='check' class="item__checkbox" onclick='isCheck(${id})' id='check${id}'/>
+                      <label for='check${id}'></label>
+                    </div>
+                    <div 
+                      style='
+                      background: linear-gradient(0deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.05) 100%), url(${img}) 100% / cover no-repeat, lightgray 50% / cover no-repeat;
+                      ' class="item__img">
+                    </div>
+                      ${
+                        size
+                          ? `<span class="size caption-14">${size}</span>`
+                          : ""
+                      }
+                  </div>
+                  <div>
+                    <div>
+                      <div class="item-price">
+                        ${countPrice(newPrice, cart)}<h4>&nbsp;сом</h4>
+                          <div class='item__oldPrice_line'>
+                            <p class="item__oldPrice caption">${Math.round(
+                              oldPrice * cart
+                            ).toLocaleString("ru")} сом</p>
+                          </div>
+                      </div>
+                      <div class="item__description">
+                      <span class="item__name caption-14">${name}</span>
+                        ${
+                          color
+                            ? `<span class="caption">Цвет: ${color}</span>`
+                            : ""
+                        }
+                        <p class="caption">Коледино WB</p>
+                    </div>
+                      <div></div>
+                    </div>
+                    <div></div>
+                    <div></div>
+                  </div>
+                </div>
+            <div class="line"></div>
+            </div>
+          </li>`)
+            : (htmlCatalog += `
           <li key='${id}' class="products__item">
             <div class="item">
               <div style='display: flex; justify-content:center; gap: 12px;'>
@@ -94,8 +146,8 @@ class Products {
                             ((oldPrice * 0.9 - newPrice) / (oldPrice * 0.9)) *
                               100
                           )}%</p><p>−${Math.round(
-          oldPrice * 0.9 - newPrice
-        ).toLocaleString("ru")} сом</p>
+                oldPrice * 0.9 - newPrice
+              ).toLocaleString("ru")} сом</p>
                           </div>
                         <div class="tooltip_line caption"><p style='color: #A0A0A4'>Скидка покупателя 10%</p><p>−${Math.round(
                           oldPrice * 0.1
@@ -108,7 +160,8 @@ class Products {
             </div>
             </div>
         </li>
-        `;
+        `);
+        }
       }
     );
 
@@ -118,7 +171,7 @@ class Products {
         <label for='checkAll'></label>
         <p>Выбрать все</p>
       </div>
-      <div class="line"></div>
+      ${mediaQuery.matches ? "" : `<div class="line"></div>`}
         <ul class='products__list'>
         ${htmlCatalog}
         </ul>

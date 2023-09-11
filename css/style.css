@@ -64,6 +64,14 @@ h5 {
   line-height: 16px;
 }
 
+.caption-14 {
+  font-family: Segoe UI;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+
 .caption-400 {
   font-family: Segoe UI;
   font-size: 16px;
@@ -315,6 +323,10 @@ main {
   margin-bottom: 40px;
 }
 
+.main_section > div:last-child {
+  margin-bottom: 22px;
+}
+
 .main__container {
   display: flex;
   max-width: 1400px;
@@ -329,7 +341,7 @@ main {
 
 footer {
   position: relative;
-  padding: 40px 24px 24px 24px;
+  padding: 48px 24px 24px 24px;
   background: var(--system-violet, #6725a8);
   color: rgba(255, 255, 255, 0.7);
   text-align: center;

@@ -26,10 +26,10 @@ class Delivery {
             </div>
         </div>
     </div>
-    <div style="display: flex; gap: 8px;">
+    <div style="display: flex; gap: 8px; align-items: center;">
       <img src='img/icons/price_shipping.svg' alt='' />
       <div>
-    <div style="display: flex; position: relative; align-items: center;">
+    <div style="display: flex; position: relative;">
     <p class='caption'>Обратная доставка товаров на склад при отказе — &nbsp;</p>
           <div class="free-shipping-text-del caption">бесплатно
             <div class="coupontooltidel caption">

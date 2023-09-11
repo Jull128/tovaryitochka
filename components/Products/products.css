@@ -187,7 +187,7 @@
   white-space: wrap;
   z-index: 1000;
   width: 280px;
-  height: 104px;
+  min-height: 104px;
 }
 
 .free-shipping-text > .coupontooltip {
@@ -317,4 +317,73 @@
 }
 .trash:hover {
   background: url(/img/icons/trashcanRed.svg);
+}
+
+@media (max-width: 320px) {
+  .item__checkbox_container {
+    display: flex;
+    position: absolute;
+    padding: 4px;
+    align-items: center;
+  }
+
+  .item__checkbox + label::before {
+    background-color: white;
+  }
+
+  .item__description {
+    margin-top: 2px;
+  }
+
+  .item__img {
+    width: 80px;
+    height: 106px;
+    border-radius: 8px;
+  }
+
+  .item__oldPrice_line {
+    margin-left: 5px;
+    cursor: none;
+  }
+
+  .item-price {
+    display: flex;
+    align-items: baseline;
+  }
+
+  .line {
+    margin-top: 0;
+  }
+
+  .list-item__section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .list-item__img {
+    position: relative;
+  }
+
+  .list-item__wrap {
+    display: flex;
+    gap: 16px;
+  }
+
+  .products__item {
+    flex-direction: column;
+  }
+
+  .size {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 79px;
+    left: 4px;
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    background-color: white;
+  }
 }
