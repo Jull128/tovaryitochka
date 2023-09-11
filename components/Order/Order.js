@@ -21,14 +21,22 @@ class Order {
                 </div>
             </div>
             <div class='order__section_delivery'>
+
+            ${
+              mediaQuery.matches
+                ? ``
+                : `
                 <div class='order__delivery_place'>
-                    <div class='order__delivery_edit_title'>
-                        <h4>Доставка <span id='deliverychoose'></span></h4>
-                        <button class='order__delivery_edit' onclick='openModal()'></button>
-                    </div>
-                    <p name='adresschoose' class='caption'></p>
-                    <span class="data-shipping-text caption">5–8 фев</span>
+                <div class='order__delivery_edit_title'>
+                    <h4>Доставка <span id='deliverychoose'></span></h4>
+                    <button class='order__delivery_edit' onclick='openModal()'></button>
                 </div>
+                <p name='adresschoose' class='caption'></p>
+                <span class="data-shipping-text caption">5–8 фев</span>
+                </div>
+                `
+            }
+
                 <div class='order__delivery_info'>
                     <img src='img/icons/price_shipping.svg' alt='' />
                     <div class="delivery-info3">
@@ -48,11 +56,17 @@ class Order {
                     </div>
                 </div>
                 <div class='order__card'>
-                    <div class='order__card_edit_title'>
-                        <h4>Оплата картой</h4>
-                        <button class='order__delivery_edit' onclick='openModalCard()'></button>
-                    </div>
-                    <p id='cardchoose' name='cardchoose' class='order__cardChoose caption'></p>
+                ${
+                  mediaQuery.matches
+                    ? ``
+                    : `
+                      <div class='order__card_edit_title'>
+                      <h4>Оплата картой</h4>
+                      <button class='order__delivery_edit' onclick='openModalCard()'></button>
+                  </div>
+                  <p id='cardchoose' name='cardchoose' class='order__cardChoose caption'></p>
+                      `
+                }
                     <div class='payment-container'>
                         <div class='payment-method-container'>
                             <div class='item__checkbox_container'>

@@ -24,49 +24,63 @@ class Products {
 
             <div class='list-item__section'>
               <div class="line"></div>
-                <div class='list-item__wrap'>
-                  <div class="list-item__img">
-                    <div class='item__checkbox_container'>
-                      <input type='checkbox' name='check' class="item__checkbox" onclick='isCheck(${id})' id='check${id}'/>
-                      <label for='check${id}'></label>
-                    </div>
-                    <div 
-                      style='
-                      background: linear-gradient(0deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.05) 100%), url(${img}) 100% / cover no-repeat, lightgray 50% / cover no-repeat;
-                      ' class="item__img">
-                    </div>
-                      ${
-                        size
-                          ? `<span class="size caption-14">${size}</span>`
-                          : ""
-                      }
+              <div class='list-item__wrap'>
+                <div class="list-item__img">
+                  <div class='item__checkbox_container'>
+                    <input type='checkbox' name='check' class="item__checkbox" onclick='isCheck(${id})' id='check${id}'/>
+                    <label for='check${id}'></label>
                   </div>
-                  <div>
-                    <div>
-                      <div class="item-price">
-                        ${countPrice(newPrice, cart)}<h4>&nbsp;сом</h4>
-                          <div class='item__oldPrice_line'>
-                            <p class="item__oldPrice caption">${Math.round(
-                              oldPrice * cart
-                            ).toLocaleString("ru")} сом</p>
-                          </div>
+                  <div 
+                    style='
+                    background: linear-gradient(0deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.05) 100%), url(${img}) 100% / cover no-repeat, lightgray 50% / cover no-repeat;
+                    ' class="item__img">
+                  </div>
+                    ${
+                      size ? `<span class="size caption-14">${size}</span>` : ""
+                    }
+                </div>
+                <div>
+                  <div class="item-price">
+                    ${countPrice(newPrice, cart)}
+                      <div class='item__oldPrice_line'>
+                        <p class="item__oldPrice caption">${Math.round(
+                          oldPrice * cart
+                        ).toLocaleString("ru")} сом</p>
                       </div>
-                      <div class="item__description">
-                      <span class="item__name caption-14">${name}</span>
+                  </div>
+                  <div class="item__description">
+                    <span class="item__name caption-14">${name}</span>
                         ${
                           color
                             ? `<span class="caption">Цвет: ${color}</span>`
                             : ""
                         }
-                        <p class="caption">Коледино WB</p>
-                    </div>
-                      <div></div>
-                    </div>
-                    <div></div>
-                    <div></div>
+                      <p class="item-color_sort caption">Коледино WB</p>
                   </div>
                 </div>
-            <div class="line"></div>
+              </div>
+              <div class='list-item__wrap'>           
+                <div class="container__counter_price">
+                  <div style='display:flex; flex-direction:column; gap:8px;'>
+                    <div class='counter' data-counter>
+                    <button class="counter__btn-d" onclick='decrement(${id})'>−</button>
+                    <div class="counter__input caption-14" id='${id}'>${cart}</div>
+                    <button class="counter__btn-i" onclick='increment(${id})'>+</button>
+                  </div>
+                </div>
+                <div class='list-item__bottom'>
+                  ${
+                    availability - cart < 5
+                      ? `<p class='countainer__counter_availability caption'>
+                      Осталось ${availability - cart} шт.</p>`
+                      : ""
+                  }
+                  <div class='btn_lovely_remove'>
+                  <button class='heart'></button>
+                  <button class='trash'></button>
+                  </div>
+                </div>
+              </div>
             </div>
           </li>`)
             : (htmlCatalog += `
@@ -166,10 +180,16 @@ class Products {
     );
 
     const html = `
+    ${
+      mediaQuery.matches
+        ? `<h2 class="main__title">Корзина</h2>`
+        : `<h1 class="main__title">Корзина</h1>`
+    }
+
       <div class='item__checkboxAll_container'>
         <input type='checkbox' onClick="toggle(this)" class="item__checkbox" id='checkAll' />
         <label for='checkAll'></label>
-        <p>Выбрать все</p>
+        <p class='caption-16'>Выбрать все</p>
       </div>
       ${mediaQuery.matches ? "" : `<div class="line"></div>`}
         <ul class='products__list'>

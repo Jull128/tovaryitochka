@@ -181,6 +181,14 @@
   display: block;
 }
 
+.cardchooseDel {
+  height: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 16px 0 8px 0;
+}
+
 .coupontooltidel {
   display: none;
   /* NEW */
@@ -197,4 +205,36 @@
   z-index: 1000;
   width: 256px;
   height: 32px;
+}
+
+@media (max-width: 320px) {
+  .cardchooseDel {
+    margin: 0;
+  }
+
+  .delivery__block {
+    margin-bottom: 16px;
+  }
+
+  .delivery__info {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .delivery__info_line {
+    gap: 0;
+  }
+
+  .delivery__info_label.height {
+    height: 35px;
+  }
+
+  .delivery__section {
+    padding: 16px;
+    gap: 8px;
+  }
+
+  .form_input_container {
+    height: 54px;
+  }
 }

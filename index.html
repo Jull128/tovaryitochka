@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="'adaptive'">
+<html lang="en" class="adaptive">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,47 +8,13 @@
   </head>
   <body>
     <div class="wrapper">
-      <header class="header">
-        <!-- <div class="header__container">
-          <div class="nav-element">
-            <button class="nav-element__burger">
-              <img src="img/icons/burger.svg" alt="" />
-            </button>
-            <span class="nav-element__title">ТОВАРЫ &#10; И ТОЧКА</span>
-          </div>
-          <button class="search__btn"></button>
-        </div> -->
-        <div class="header__container">
-          <div class="nav-element">
-            <button class="nav-element__burger">
-              <img src="img/icons/burger.svg" alt="" />
-            </button>
-            <span class="nav-element__title">ТОВАРЫ &#10; И ТОЧКА</span>
-          </div>
-          <div class="search__container">
-            <input class="search" placeholder="Я ищу..." type="text" />
-            <button class="search__btn"></button>
-          </div>
-          <div class="navbar">
-            <div class="navbar__item">
-              <img src="img/icons/profile.svg" alt="" />
-              <p>Профиль</p>
-            </div>
-            <div class="navbar__item">
-              <img src="img/icons/basket.svg" alt="" />
-              <div id="cartAmount" class="cartAmount"></div>
-              <p>Корзина</p>
-            </div>
-          </div>
-        </div>
-      </header>
+      <header id="header" class="header"></header>
       <main>
         <div class="main__container_block">
           <div class="main__container">
             <div class="main_section">
-              <h1 class="main__title">Корзина</h1>
-              <div id="products"></div>
-              <div id="productsInactive"></div>
+              <div id="products" class="products"></div>
+              <div id="productsInactive" class="productsInactive"></div>
               <div id="delivery"></div>
             </div>
             <div id="order" class="orderWidth"></div>
@@ -63,6 +29,9 @@
     <script src="constants/root.js"></script>
     <script src="js/index.js"></script>
     <script src="utils/localStorageUtil.js"></script>
+    <!-- Header-->
+    <script src="components/Header/Header.js"></script>
+    <link rel="stylesheet" href="components/Header/header.css" />
     <!-- Products-->
     <script src="components/Products/products.js"></script>
     <link rel="stylesheet" href="components/Products/products.css" />

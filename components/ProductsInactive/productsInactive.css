@@ -28,3 +28,13 @@
   width: 309px;
   color: var(--system-gray, #a0a0a4);
 }
+
+@media (max-width: 320px) {
+  .productsInactive {
+    padding: 0 16px;
+  }
+
+  .productsInactive__item_description {
+    width: 100%;
+  }
+}

@@ -80,7 +80,9 @@ let update = (id) => {
 let calculation = () => {
   let cartIcon = document.getElementById("cartAmount");
   let cartLength = Object.keys(basket?.map((x) => x.cart)).length;
-  cartIcon.innerHTML = cartLength;
+  if (!mediaQuery.matches) {
+    cartIcon.innerHTML = cartLength;
+  }
 };
 calculation();
 
@@ -88,11 +90,14 @@ calculation();
 let countPrice = (price, cart) => {
   let length = String(price).length;
   price = Math.round(price * cart).toLocaleString("ru");
-
-  if (length < 4) {
-    return `<h3 id='newPrice' class="item__newPrice">${price} </h3>`;
+  if (mediaQuery.matches) {
+    return `<h4 id='newPrice' class="item__newPrice">${price} сом</h4>`;
   } else {
-    return `<h4 id='newPrice' class="item__newPrice">${price}</h4>`;
+    if (length < 4) {
+      return `<h3 id='newPrice' class="item__newPrice">${price} </h3>`;
+    } else {
+      return `<h4 id='newPrice' class="item__newPrice">${price}</h4>`;
+    }
   }
 };
 
@@ -291,7 +296,9 @@ let isDeliveryChoose = () => {
         }
       })
       .join("");
-    label.innerHTML = `${amount}`;
+    if (!mediaQuery.matches) {
+      label.innerHTML = `${amount}`;
+    }
   }
 };
 
@@ -396,7 +403,9 @@ let isCardChoose = () => {
         }
       })
       .join("");
-    label.innerHTML = `${amount}`;
+    if (!mediaQuery.matches) {
+      label.innerHTML = `${amount}`;
+    }
   }
 };
 
