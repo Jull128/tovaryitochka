@@ -1,5 +1,4 @@
 const mediaQuery = window.matchMedia("(max-width: 320px)");
-console.log(mediaQuery);
 // отображение корзины
 const dataCatalog = () => {
   if (localStorage.getItem("data")) {

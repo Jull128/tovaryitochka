@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" class="adaptive">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <base href="https://tovaryitochka.firebaseapp.com/" />
+    <title>Товары и точка</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header id="header" class="header"></header>
+      <main>
+        <div class="main__container_block">
+          <div class="main__container">
+            <div class="main_section">
+              <div id="products" class="products"></div>
+              <div id="productsInactive" class="productsInactive"></div>
+              <div id="delivery"></div>
+            </div>
+            <div id="order" class="orderWidth"></div>
+            <div class="modal"></div>
+          </div>
+        </div>
+      </main>
+      <footer class="caption">© 2022 ООО «Товары и точка»</footer>
+    </div>
+    <script
+      type="text/javascript"
+      src="https://tovaryitochka.firebaseapp.com/runtime.a66f828dca56eeb90e02.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://tovaryitochka.firebaseapp.com/main.2eb2046276073df361f7.js"
+    ></script>
+    <script src="./constants/constants.js"></script>
+    <script src="./constants/root.js"></script>
+    <script src="./js/index.js"></script>
+
+    <!-- Products-->
+    <script src="./components/Products/Products.js"></script>
+    <link rel="stylesheet" href="./components/Products/products.css" />
+    <!-- Delivery-->
+    <script src="./components/Delivery/Delivery.js"></script>
+    <link rel="stylesheet" href="./components/Delivery/delivery.css" />
+    <!-- Order-->
+    <script src="./components/Order/Order.js"></script>
+    <link rel="stylesheet" href="./components/Order/order.css" />
+    <!-- Header-->
+    <script src="./components/Header/Header.js"></script>
+    <link rel="stylesheet" href="./components/Header/header.css" />
+    <!-- Products Inactive-->
+    <script src="./components/ProductsInactive/ProductsInactive.js"></script>
+    <link
+      rel="stylesheet"
+      href="./components/ProductsInactive/productsInactive.css"
+    />
+    <!-- Modals-->
+    <script src="./components/Modals/ModalDelivery.js"></script>
+    <script src="./components/Modals/ModalCard.js"></script>
+    <link rel="stylesheet" href="./components/Modals/modals.css" />
+  </body>
+</html>
