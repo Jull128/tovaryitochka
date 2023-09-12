@@ -75,8 +75,8 @@ class Delivery {
       </div>
     <div class='form_input_container'>
     <div class="Input">
-        <input type="text" id="email" onchange="checkEmail()" class="Input-text caption-400" placeholder="Почта">
-        <label for="email" class="Input-label caption">Почта</label>
+        <input type="text" id="email" onchange="checkEmail()" class="Input-text caption-400" placeholder="Электронная почта">
+        <label for="email" class="Input-label caption">Электронная почта</label>
         <small>Error</small>
     </div>
 </div>
@@ -119,8 +119,8 @@ class Delivery {
       <div class='form_line'>
       <div class='form_input_container'>
       <div class="Input">
-          <input type="text" id="email" onchange="checkEmail()" class="Input-text caption-400" placeholder="Почта">
-          <label for="email" class="Input-label caption">Почта</label>
+          <input type="text" id="email" onchange="checkEmail()" class="Input-text caption-400" placeholder="Электронная почта">
+          <label for="email" class="Input-label caption">Электронная почта</label>
           <small>Error</small>
       </div>
   </div>
@@ -149,10 +149,10 @@ class Delivery {
         <div class='delivery__block'>
           ${htmlAdaptive}
         </div>
-        <div style="display: flex; gap: 8px; align-items: center;">
+        <div style="display: flex; gap: 8px; align-items: center;" class='delivery_free'>
           <img src='img/icons/price_shipping.svg' alt='' />
           <div>
-            <div style="display: flex; position: relative;">
+            <div style="display: flex; position: relative;" >
               <div class='caption'>Обратная доставка товаров на склад при отказе — &nbsp;
                 <span class="free-shipping-text-del caption">бесплатно
                   <div class="coupontooltidel caption">

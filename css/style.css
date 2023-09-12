@@ -251,7 +251,7 @@ footer::before {
     flex-direction: column;
     max-width: 320px;
     margin: 0;
-    gap: 32px;
+    gap: 16px;
     padding: 0;
   }
 
@@ -266,11 +266,16 @@ footer::before {
   .main_section > div:nth-child(2) {
     margin-bottom: 32px;
   }
+
+  .main_section > div:last-child {
+    margin-bottom: 11px;
+  }
   .main__title {
     padding: 0 16px;
   }
 
   .orderWidth {
+    height: 383px;
     width: 320px;
   }
 

@@ -133,6 +133,7 @@ function isCheck(id) {
   search.checked = checkbox;
   localStorage.setItem("data", JSON.stringify(basket));
   update(selected.id);
+  deliveryPage.render();
 }
 
 // КОРЗИНА
@@ -473,7 +474,7 @@ function htmlDeliverytest() {
       cart = cart - amount;
     }
 
-    if (amount > 0) {
+    if (amount > 0 && el.checked) {
       del1 = true;
       label1.innerHTML += `
               <div class="delivery_imgWidth" style='
@@ -495,7 +496,7 @@ function htmlDeliverytest() {
       cart = cart - amount;
     }
 
-    if (amount > 0) {
+    if (amount > 0 && el.checked) {
       del2 = true;
       label2.innerHTML += `
               <div style='width: 40px;
