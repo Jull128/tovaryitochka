@@ -259,7 +259,13 @@ footer::before {
     width: 320px;
     min-width: 288px;
   }
+  .main_section > div {
+    margin-bottom: 45px;
+  }
 
+  .main_section > div:nth-child(2) {
+    margin-bottom: 32px;
+  }
   .main__title {
     padding: 0 16px;
   }

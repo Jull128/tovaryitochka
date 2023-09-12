@@ -10,13 +10,13 @@ class Delivery {
           <div class='delivery__info_line'>
             <p class='delivery__info_label caption-600'>Пункт выдачи</p>
             <div>
-              <p name='adresschoose'></p>
+              <p name='adresschoose' class='caption-16'></p>
               <p class='caption' style='margin-top: 4px;'><img style='margin-right: 1px;' src="img/icons/star_fill.svg"/>&nbsp;4.99&nbsp; Ежедневно с 10 до 21 </p>
             </div>
           </div>
           <div class='delivery__info_line'>
               <p class='delivery__info_label caption-600'>Стоимость доставки</p>
-              <p>Бесплатно</p>
+              <p class='caption-16'>Бесплатно</p>
           </div>
           <div class='delivery__info_line'>
             <p id='p_5-6' class='delivery__info_label caption-600'></p>
@@ -32,27 +32,26 @@ class Delivery {
     `
       : `
       <div class='delivery__title'>
-      <h2>Способ доставки </h2>
-      <h4 onclick='openModal()' style='color: var(--system-magenta, #CB11AB); cursor: pointer;'>Изменить</h4>
+        <h2>Способ доставки </h2>
+        <h4 onclick='openModal()' style='color: var(--system-magenta, #CB11AB); cursor: pointer;'>Изменить</h4>
       </div>
-    <div class='delivery__info'>
-      <div class='delivery__info_line'>
-          <p class='delivery__info_label caption-600' style='height: 44px'>Пункт выдачи</p>
-          <p class='delivery__info_label caption-600'>Стоимость доставки</p>
-          <p id='p_5-6' class='delivery__info_label caption-600'></p>
-          <p id='p_7-8' class='delivery__info_label caption-600'></p>
+      <div class='delivery__info'>
+        <div class='delivery__info_line'>
+            <p class='delivery__info_label caption-600' style='height: 44px'>Пункт выдачи</p>
+            <p class='delivery__info_label caption-600'>Стоимость доставки</p>
+            <p id='p_5-6' class='delivery__info_label caption-600'></p>
+            <p id='p_7-8' class='delivery__info_label caption-600'></p>
+        </div>
+        <div class='delivery__info_line'>
+            <div>
+              <p name='adresschoose'></p>
+              <p class='caption' style='margin-top: 4px;'><img style='margin-right: 1px;' src="img/icons/star_fill.svg"/>&nbsp;4.99&nbsp; Ежедневно с 10 до 21 </p>
+            </div>
+            <p>Бесплатно</p>
+            <div id='5-6' name='htmlDelivery' style='display: flex; gap: 8px; position: relative;'></div>
+            <div id='7-8' name='htmlDelivery' style='display: flex; gap: 8px; position: relative;'></div>
+        </div>
       </div>
-      <div class='delivery__info_line'>
-      <div>
-          <p name='adresschoose'></p>
-          <p class='caption' style='margin-top: 4px;'><img style='margin-right: 1px;' src="img/icons/star_fill.svg"/>&nbsp;4.99&nbsp; Ежедневно с 10 до 21 </p>
-          </div>
-          <p>Бесплатно</p>
-          <div id='5-6' name='htmlDelivery' style='display: flex; gap: 8px; position: relative;'></div>
-          <div id='7-8' name='htmlDelivery' style='display: flex; gap: 8px; position: relative;'></div>
-      </div>
-      </div>
-    </div>
     `;
 
     let formAdaptive = mediaQuery.matches
@@ -187,8 +186,10 @@ ${mediaQuery.matches ? `<h3>Получатель</h3>` : `<h2>Получател
             `;
 
     ROOT_DELIVERY.innerHTML = htmlCatalog;
+    if (!mediaQuery.matches) {
+      isCardChooseDel();
+    }
     isAdressChoose();
-    isCardChooseDel();
     htmlDeliverytest();
   }
 }

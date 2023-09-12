@@ -179,14 +179,14 @@
   .header__container {
     max-width: 100%;
     gap: 16px;
-    padding: 11px 13px 37px 13px;
+    padding: 12px 13px 39px 13px;
   }
 
   .nav-element__burger {
     width: 28px;
     height: 28px;
     display: flex;
-    padding: 0;
+    padding: 4px 0 0 0;
     justify-content: center;
     align-items: center;
     background-color: rgba(255, 255, 255, 0);
@@ -197,6 +197,7 @@
 
   .nav-element__title {
     font-size: 26px;
+    padding: 0px 4px 4px;
   }
 
   .search__btn {
@@ -209,7 +210,7 @@
     background-repeat: no-repeat;
     background-position: 0 center;
     border: none;
-    padding: 0;
+    padding: 1px 0 0 0;
     cursor: none;
     background-image: none;
   }

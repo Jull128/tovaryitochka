@@ -87,8 +87,10 @@ class Order {
           `;
 
     ROOT_ORDER.innerHTML = htmlOrder;
-    isDeliveryChoose();
-    isAdressChoose();
+    if (!mediaQuery.matches) {
+      isDeliveryChoose();
+      isAdressChoose();
+    }
     isCardChoose();
     isCardChooseDel();
     TotalPrice();

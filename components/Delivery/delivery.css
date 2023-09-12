@@ -14,11 +14,19 @@
   background: var(--background-white, #fff);
 }
 
+.delivery__section:nth-child(2) {
+  gap: 0;
+}
+
 .delivery__block {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 16px;
+}
+
+.delivery_imgWidth {
+  width: 40px;
 }
 
 .delivery__info {
@@ -214,6 +222,11 @@
 
   .delivery__block {
     margin-bottom: 16px;
+    gap: 11px;
+  }
+
+  .delivery_imgWidth {
+    width: 40.925px;
   }
 
   .delivery__info {
@@ -223,6 +236,13 @@
 
   .delivery__info_line {
     gap: 0;
+  }
+
+  .delivery__info_line:nth-child(2) {
+    padding-bottom: 4px;
+  }
+  .delivery__info_line:nth-child(3) {
+    padding-bottom: 8px;
   }
 
   .delivery__info_label.height {

@@ -15,7 +15,6 @@ class ProductsInactive {
               <img src="${img}" class="productsInactive__item_img" />
                   ${size ? `<span class="size caption-14">${size}</span>` : ""}
               </div>
-              <div>
                 <div class="productsInactive__item_description">
                   <span class="item__name caption-14">${name}</span>
                       ${
@@ -24,7 +23,6 @@ class ProductsInactive {
                           : ""
                       }
                 </div>
-              </div>
             </div>
             <div class='list-item__wrap'>           
               <div class='list-item__bottom'>
@@ -72,7 +70,7 @@ class ProductsInactive {
     });
 
     const html = `
-        <div class=''>
+        <div class='productsInactive__title'>
           <p class='caption-600'>Отсутствуют · 3 товара</p>
         </div>
         <div class="line"></div>

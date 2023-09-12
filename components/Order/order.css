@@ -219,10 +219,26 @@
     padding: 8px 16px 0px 16px;
     flex-direction: column;
     align-items: center;
-    gap: 24px;
+    gap: 16px;
     border-radius: 0;
     background: none;
     box-shadow: none;
+  }
+
+  .order__delivery_info {
+    background: var(--system-smoky-dark, #f0ecf4);
+  }
+  .order__card {
+    margin-top: 0;
+  }
+
+  .order__section_delivery {
+    gap: 16px;
+  }
+  .payment-container {
+    background: var(--system-smoky-dark, #f0ecf4);
+    margin-top: 0;
+    margin-bottom: 8px;
   }
 
   .payment-description {

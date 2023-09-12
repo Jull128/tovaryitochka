@@ -76,16 +76,6 @@ let update = (id) => {
   TotalDiscount();
 };
 
-// калькуляция количества позиций товаров в корзине (шапка). подсчет количества позиций, без учета счетчика
-let calculation = () => {
-  let cartIcon = document.getElementById("cartAmount");
-  let cartLength = Object.keys(basket?.map((x) => x.cart)).length;
-  if (!mediaQuery.matches) {
-    cartIcon.innerHTML = cartLength;
-  }
-};
-calculation();
-
 // расчет новой цены
 let countPrice = (price, cart) => {
   let length = String(price).length;
@@ -94,7 +84,7 @@ let countPrice = (price, cart) => {
     return `<h4 id='newPrice' class="item__newPrice">${price} сом</h4>`;
   } else {
     if (length < 4) {
-      return `<h3 id='newPrice' class="item__newPrice">${price} </h3>`;
+      return `<h3 id='newPrice' class="item__newPrice">${price}</h3>`;
     } else {
       return `<h4 id='newPrice' class="item__newPrice">${price}</h4>`;
     }
@@ -296,9 +286,7 @@ let isDeliveryChoose = () => {
         }
       })
       .join("");
-    if (!mediaQuery.matches) {
-      label.innerHTML = `${amount}`;
-    }
+    label.innerHTML = `${amount}`;
   }
 };
 
@@ -488,7 +476,7 @@ function htmlDeliverytest() {
     if (amount > 0) {
       del1 = true;
       label1.innerHTML += `
-              <div style='width: 40px;
+              <div class="delivery_imgWidth" style='
               height: 56px;
               border-radius: 8px;
               background: linear-gradient(0deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.05) 100%), url(${

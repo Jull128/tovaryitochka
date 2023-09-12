@@ -1,7 +1,11 @@
 class Products {
   render() {
     let htmlCatalog = "";
-
+    const available = (availability, cart) => {
+      if (availability - cart < 5) {
+        return true;
+      }
+    };
     basket?.forEach(
       ({
         id,
@@ -17,9 +21,8 @@ class Products {
         OGRN,
         adress,
       }) => {
-        {
-          mediaQuery.matches
-            ? (htmlCatalog += `
+        mediaQuery.matches
+          ? (htmlCatalog += `
           <li key='${id}' class="products__item">
 
             <div class='list-item__section'>
@@ -83,7 +86,7 @@ class Products {
               </div>
             </div>
           </li>`)
-            : (htmlCatalog += `
+          : (htmlCatalog += `
           <li key='${id}' class="products__item">
             <div class="item">
               <div style='display: flex; justify-content:center; gap: 12px;'>
@@ -133,7 +136,7 @@ class Products {
                 <button class="counter__btn" onclick='increment(${id})'>+</button>
               </div>
               ${
-                availability - cart < 5
+                available(availability, cart)
                   ? `<p class='countainer__counter_availability caption'>
                    Осталось ${availability - cart} шт.</p>`
                   : ""
@@ -160,8 +163,8 @@ class Products {
                             ((oldPrice * 0.9 - newPrice) / (oldPrice * 0.9)) *
                               100
                           )}%</p><p>−${Math.round(
-                oldPrice * 0.9 - newPrice
-              ).toLocaleString("ru")} сом</p>
+              oldPrice * 0.9 - newPrice
+            ).toLocaleString("ru")} сом</p>
                           </div>
                         <div class="tooltip_line caption"><p style='color: #A0A0A4'>Скидка покупателя 10%</p><p>−${Math.round(
                           oldPrice * 0.1
@@ -175,7 +178,6 @@ class Products {
             </div>
         </li>
         `);
-        }
       }
     );
 
