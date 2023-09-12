@@ -308,13 +308,13 @@
 }
 
 .heart {
-  background: url(/img/icons/heart.svg);
+  background: url(/img/icons/heart.svg) no-repeat;
 }
 .heart:hover {
   background: url(/img/icons/heartActive.svg);
 }
 .trash {
-  background: url(/img/icons/trashcan.svg);
+  background: url(/img/icons/trashcan.svg) no-repeat;
 }
 .trash:hover {
   background: url(/img/icons/trashcanRed.svg);

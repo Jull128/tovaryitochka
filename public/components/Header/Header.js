@@ -48,7 +48,6 @@ header.render();
 // калькуляция количества позиций товаров в корзине (шапка). подсчет количества позиций, без учета счетчика
 let calculation = () => {
   let cartIcon = document.getElementById("cartAmount");
-  console.log(cartIcon);
   let cartLength = Object.keys(basket?.map((x) => x.cart)).length;
   cartIcon.innerHTML = cartLength;
 };

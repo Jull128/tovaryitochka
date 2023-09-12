@@ -166,7 +166,7 @@
   flex: 0 0 auto;
   width: 164px;
   height: 44px;
-  font: 700 16px Segoe UI;
+  font: 700 16px "Segoe UI";
   color: white;
   cursor: url(/img/icons/cursor.svg), pointer;
   background: #cb11ab;

@@ -165,7 +165,7 @@
   background: var(--system-red, #f55123);
   color: var(--system-white, #fff);
   text-align: center;
-  font-family: Segoe UI;
+  font-family: "Segoe UI";
   font-size: 10px;
   font-style: normal;
   font-weight: 700;
