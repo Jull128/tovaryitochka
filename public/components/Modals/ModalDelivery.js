@@ -54,6 +54,4 @@ function openModal() {
   modalEl.innerHTML = html;
   isCheckedDel();
   isCheckedAdr();
-  // const btnClose = document.querySelector(".modal__button-close");
-  // btnClose.addEventListener("click", () => closeModal());
 }
