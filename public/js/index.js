@@ -274,6 +274,7 @@ function isCheckedDelEdit() {
   }
 }
 
+//отображение выбранного способа доставки
 let isDeliveryChoose = () => {
   let label = document.getElementById("deliverychoose");
   if (delivery.length !== 0) {
@@ -324,7 +325,7 @@ function isCheckedAdrEdit() {
     }
   }
 }
-
+//отображение выбранного адреса
 let isAdressChoose = () => {
   let label = document.getElementsByName("adresschoose");
 
@@ -378,7 +379,7 @@ function isCheckedCardEdit() {
     }
   }
 }
-
+//отображение выбранной карты
 let isCardChoose = () => {
   let label = document.getElementById("cardchoose");
   if (card.length !== 0) {
@@ -397,6 +398,7 @@ let isCardChoose = () => {
   }
 };
 
+//отображение выбранной карты в блоке продуктов
 let isCardChooseDel = () => {
   let label2 = document.getElementById("cardchooseDel");
   if (card.length !== 0) {
@@ -412,7 +414,7 @@ let isCardChooseDel = () => {
     label2.innerHTML = `${amount2}`;
   }
 };
-
+//закрытие модалки
 function closeModal() {
   modalEl.classList.remove("modal--show");
   //   document.body.classList.remove("stop-scrolling");
@@ -451,6 +453,7 @@ function saveCard() {
   orderBasket.render();
 }
 
+//отображение выбранных товаров в доставке по датам блок "poducts" (по чекбоксу)
 function htmlDeliverytest() {
   //получем два элемента с датами в html
   let label1 = document.getElementById("5-6");
