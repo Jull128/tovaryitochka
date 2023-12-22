@@ -1,38 +1,74 @@
 const mediaQuery = window.matchMedia("(max-width: 320px)");
 // отображение корзины
-const dataCatalog = () => {
+const getCatalogData = () => {
   if (localStorage.getItem("data")) {
     return JSON.parse(localStorage.getItem("data"));
   } else return CATALOG;
 };
 
+// отображение недоступных товаров
+const getInactiveCatalogdata = () => {
+  if (localStorage.getItem("dataInactive")) {
+    return JSON.parse(localStorage.getItem("dataInactive"));
+  } else return INACTIVE;
+};
+
 // отображение доставки
-const dataDelivery = () => {
+const getDeliveryData = () => {
   if (localStorage.getItem("dataDelivery")) {
     return JSON.parse(localStorage.getItem("dataDelivery"));
   } else return DELIVERY;
 };
 
 // отображение адреса
-const dataAdress = () => {
+const getAdressData = () => {
   if (localStorage.getItem("dataAdress")) {
     return JSON.parse(localStorage.getItem("dataAdress"));
   } else return ADRESS;
 };
 
 // отображение карт оплаты
-const dataCard = () => {
+const getCardData = () => {
   if (localStorage.getItem("dataCard")) {
     return JSON.parse(localStorage.getItem("dataCard"));
   } else return CARD;
 };
 
-let basket = dataCatalog();
-let delivery = dataDelivery();
-let adress = dataAdress();
-let card = dataCard();
+let basket = getCatalogData();
+let basketInactive = getInactiveCatalogdata();
+let delivery = getDeliveryData();
+let adress = getAdressData();
+let card = getCardData();
 
 // ПРОДУКТЫ
+function removeFromCart(id) {
+  // Находим индекс элемента, который нужно удалить
+  const itemIndex = basket.findIndex((item) => item.id === id);
+  // Если элемент найден, удаляем его из массива
+  if (itemIndex !== -1) {
+    basket.splice(itemIndex, 1);
+    localStorage.setItem("data", JSON.stringify(basket));
+    calculation();
+    productsPage.render();
+    header.render();
+  } else {
+    console.error("Элемент для удаления не найден");
+  }
+}
+
+function removeFromCartIn(id) {
+  // Находим индекс элемента, который нужно удалить
+  const itemIndex = basketInactive.findIndex((item) => item.id === id);
+  // Если элемент найден, удаляем его из массива
+  if (itemIndex !== -1) {
+    basketInactive.splice(itemIndex, 1);
+    localStorage.setItem("dataInactive", JSON.stringify(basketInactive));
+    productsInactivePage.render();
+  } else {
+    console.error("Элемент для удаления не найден");
+  }
+}
+
 // счетчик на увеличение позиции товара
 const increment = (id) => {
   let selected = id;
@@ -52,8 +88,9 @@ const increment = (id) => {
 const decrement = (id) => {
   let selected = id;
   let search = basket.find((x) => x.id === selected.id);
-  if (search.cart === 0) return;
-  else {
+  if (search.cart === 1) {
+    return;
+  } else {
     search.cart -= 1;
   }
 
@@ -69,10 +106,10 @@ let update = (id) => {
   let search = basket.find((x) => x.id === id);
   document.getElementById(id).innerHTML = search.cart;
   isChecked();
-  TotalPrice();
-  TotalProducts();
-  TotalOldPrice();
-  TotalDiscount();
+  totalPrice();
+  totalProducts();
+  totalOldPrice();
+  totalDiscount();
 };
 
 // расчет новой цены
@@ -104,6 +141,7 @@ function toggle(source) {
     localStorage.setItem("data", JSON.stringify(basket));
     update(selected);
   }
+  deliveryPage.render();
 }
 
 // отображение статусов чекбоксов
@@ -131,13 +169,12 @@ function isCheck(id) {
   let search = basket.find((x) => x.id === selected.id);
   search.checked = checkbox;
   localStorage.setItem("data", JSON.stringify(basket));
-  update(selected.id);
   deliveryPage.render();
 }
 
 // КОРЗИНА
 // общая стоимость корзины
-let TotalPrice = () => {
+let totalPrice = () => {
   const check = document.getElementById("checkcard");
   const order = document.getElementById("order_button");
   let label = document.getElementById("order__price");
@@ -162,7 +199,7 @@ let TotalPrice = () => {
 };
 
 // общее количество товаров
-let TotalProducts = () => {
+let totalProducts = () => {
   let label = document.getElementById("order__products");
   if (basket.length !== 0) {
     let amount = basket
@@ -198,7 +235,7 @@ let TotalProducts = () => {
 };
 
 // общая стоимость корзины (цена без скидки)
-let TotalOldPrice = () => {
+let totalOldPrice = () => {
   let label = document.getElementById("order__oldPrice");
   if (basket.length !== 0) {
     let amount = basket
@@ -220,7 +257,7 @@ let TotalOldPrice = () => {
 };
 
 //общая стоимость корзины (скидка)
-let TotalDiscount = () => {
+let totalDiscount = () => {
   let label = document.getElementById("order__discount");
   if (basket.length !== 0) {
     let amount = basket
@@ -274,7 +311,6 @@ function isCheckedDelEdit() {
   }
 }
 
-//отображение выбранного способа доставки
 let isDeliveryChoose = () => {
   let label = document.getElementById("deliverychoose");
   if (delivery.length !== 0) {
@@ -287,7 +323,7 @@ let isDeliveryChoose = () => {
         }
       })
       .join("");
-    label.innerHTML = `${amount}`;
+    label.innerHTML = `${amount.toLowerCase()}`;
   }
 };
 
@@ -325,7 +361,7 @@ function isCheckedAdrEdit() {
     }
   }
 }
-//отображение выбранного адреса
+
 let isAdressChoose = () => {
   let label = document.getElementsByName("adresschoose");
 
@@ -344,6 +380,22 @@ let isAdressChoose = () => {
     });
   }
 };
+
+function removeAdress(id) {
+  // Находим индекс элемента, который нужно удалить
+  const itemIndex = adress.findIndex((item) => item.id === id.id);
+  console.log(itemIndex);
+  console.log(id.parentNode.parentNode);
+
+  // Если элемент найден, удаляем его из массива
+  if (itemIndex !== -1) {
+    adress.splice(itemIndex, 1);
+    id.parentNode.parentNode.parentNode.removeChild(id.parentNode.parentNode);
+    localStorage.setItem("dataAdress", JSON.stringify(adress));
+  } else {
+    console.error("Элемент для удаления не найден");
+  }
+}
 
 //КАРТЫ
 // отображение статусов чекбоксов
@@ -379,7 +431,7 @@ function isCheckedCardEdit() {
     }
   }
 }
-//отображение выбранной карты
+
 let isCardChoose = () => {
   let label = document.getElementById("cardchoose");
   if (card.length !== 0) {
@@ -398,7 +450,6 @@ let isCardChoose = () => {
   }
 };
 
-//отображение выбранной карты в блоке продуктов
 let isCardChooseDel = () => {
   let label2 = document.getElementById("cardchooseDel");
   if (card.length !== 0) {
@@ -414,7 +465,7 @@ let isCardChooseDel = () => {
     label2.innerHTML = `${amount2}`;
   }
 };
-//закрытие модалки
+
 function closeModal() {
   modalEl.classList.remove("modal--show");
   //   document.body.classList.remove("stop-scrolling");
@@ -453,7 +504,6 @@ function saveCard() {
   orderBasket.render();
 }
 
-//отображение выбранных товаров в доставке по датам блок "poducts" (по чекбоксу)
 function htmlDeliverytest() {
   //получем два элемента с датами в html
   let label1 = document.getElementById("5-6");
@@ -523,5 +573,40 @@ function htmlDeliverytest() {
     p2.className = "delivery__info_label  caption-600 height";
     p2.innerHTML += `
   7—8 февраля`;
+  }
+}
+
+// ИЗБРАННОЕ
+// добавление/удаление изранного
+function addToFavorite(id) {
+  let favorite = document.getElementById(`favor${id.id}`);
+  let search = basket.find((x) => x.id === id.id);
+  console.log(search);
+  console.log(favorite);
+  if (search.favor) {
+    search.favor = false;
+    favorite.className = "heart";
+  } else {
+    search.favor = true;
+    favorite.className = "heartActive";
+  }
+
+  localStorage.setItem("data", JSON.stringify(basket));
+  // productsPage.render();
+}
+
+function isFavorite() {
+  let favorAll = document.getElementsByName("heart");
+
+  console.log(favorAll);
+  for (var i = 0, n = favorAll.length; i < n; i++) {
+    let favorite = favorAll[i].id.substr(5);
+    console.log(favorAll[i]);
+    console.log(favorite);
+    let search = basket.find((x) => x.id === favorite);
+    console.log(search);
+    if (search.favor) {
+      favorAll[i].className = "heartActive";
+    }
   }
 }

@@ -17,14 +17,32 @@ function openModal() {
   });
 
   adress.forEach(({ id, name, checked }) => {
-    htmlCatalogAdress += `
+    htmlCatalogAdress += mediaQuery.matches
+      ? `
     <div class="modal__adress_line">
     <label class="modal__adress_label" for="${id}">
-       <input class='input__adress' name='checkAdr'  type='radio' id='${id}' />
+       <input class='input__adress' name='checkAdr' type='radio' id='${id}' />
        <span></span>
     </label>
-       <p class='modal__adress_p capton-400' >${name}</p>
-       <button class='trash'></button>
+<div class="modal__adress_mobile">
+       <p class='modal__adress_p caption-400'>${name}</p>
+       <p class='caption' style="margin-top: 4px;margin-bottom: 8px;"><img style='margin-right: 1px;' src="img/icons/star_fill.svg"/>&nbsp;4.99&nbsp; Пункт выдачи </p>
+       </div>
+       <div class="trash_container">
+       <button class='trash' onclick='removeAdress(${id})' ></button>
+       </div>
+       </div>
+  `
+      : `
+    <div class="modal__adress_line">
+    <label class="modal__adress_label" for="${id}">
+       <input class='input__adress' name='checkAdr' type='radio' id='${id}' />
+       <span></span>
+    </label>
+       <p class='modal__adress_p caption-400'>${name}</p>
+       <div class="trash_container">
+       <button class='trash' onclick='removeAdress(${id})' ></button>
+       </div>
        </div>
   `;
   });
@@ -32,7 +50,7 @@ function openModal() {
   const html = `
     <div class="modal__card">
     <div>
-    <div style="display: flex; justify-content: space-between">
+    <div class="modal__title">
       <h3>Способ доставки</h3>
       <button class="close_button" onclick='closeModal()'></button>
       </div>
@@ -54,4 +72,6 @@ function openModal() {
   modalEl.innerHTML = html;
   isCheckedDel();
   isCheckedAdr();
+  // const btnClose = document.querySelector(".modal__button-close");
+  // btnClose.addEventListener("click", () => closeModal());
 }
