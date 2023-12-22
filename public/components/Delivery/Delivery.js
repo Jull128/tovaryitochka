@@ -1,16 +1,21 @@
 class Delivery {
+  constructor() {
+    // Регистрация слушателя события
+    mediaQuery.addEventListener("change", () => this.render());
+  }
+
   render() {
     let htmlAdaptive = mediaQuery.matches
       ? `
       <div class='delivery__title'>
-        <h3>Способ доставки </h3>
+        <h3 >Способ доставки </h3>
         <h4 onclick='openModal()' style='color: var(--system-magenta, #CB11AB); cursor: pointer;'>Изменить</h4>
       </div>
       <div class='delivery__info'>
           <div class='delivery__info_line'>
             <p class='delivery__info_label caption-600'>Пункт выдачи</p>
             <div>
-              <p name='adresschoose' class='caption-16'></p>
+              <p name='adresschoose' class='caption-400'></p>
               <p class='caption' style='margin-top: 4px;'><img style='margin-right: 1px;' src="img/icons/star_fill.svg"/>&nbsp;4.99&nbsp; Ежедневно с 10 до 21 </p>
             </div>
           </div>
@@ -75,8 +80,8 @@ class Delivery {
       </div>
     <div class='form_input_container'>
     <div class="Input">
-        <input type="text" id="email" onchange="checkEmail()" class="Input-text caption-400" placeholder="Электронная почта">
-        <label for="email" class="Input-label caption">Электронная почта</label>
+        <input type="text" id="email" onchange="checkEmail()" class="Input-text caption-400" placeholder="Почта">
+        <label for="email" class="Input-label caption">Почта</label>
         <small>Error</small>
     </div>
 </div>
@@ -119,8 +124,8 @@ class Delivery {
       <div class='form_line'>
       <div class='form_input_container'>
       <div class="Input">
-          <input type="text" id="email" onchange="checkEmail()" class="Input-text caption-400" placeholder="Электронная почта">
-          <label for="email" class="Input-label caption">Электронная почта</label>
+          <input type="text" id="email" onchange="checkEmail()" class="Input-text caption-400" placeholder="Почта">
+          <label for="email" class="Input-label caption">Почта</label>
           <small>Error</small>
       </div>
   </div>
@@ -153,7 +158,7 @@ class Delivery {
           <img src='img/icons/price_shipping.svg' alt='' />
           <div>
             <div style="display: flex; position: relative;" >
-              <div class='caption'>Обратная доставка товаров на склад при отказе — &nbsp;
+              <div class='caption'>Обратная доставка товаров на склад при отказе&nbsp—&nbsp;
                 <span class="free-shipping-text-del caption">бесплатно
                   <div class="coupontooltidel caption">
                     Если товары вам не подойдут, мы вернем их обратно на склад — это бесплатно

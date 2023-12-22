@@ -1,11 +1,15 @@
 class ProductsInactive {
+  constructor() {
+    // Регистрация слушателя события
+    mediaQuery.addEventListener("change", () => this.render());
+  }
   render() {
     let htmlCatalog = "";
 
-    basket.forEach(({ id, name, img, color, size }) => {
-      {
-        mediaQuery.matches
-          ? (htmlCatalog += `
+    basketInactive?.forEach(({ id, name, img, color, size }) => {
+      console.log(id);
+      mediaQuery.matches
+        ? (htmlCatalog += `
         <li key='${id}' class="productsInactive__item">
 
           <div class='list-item__section'>
@@ -28,14 +32,14 @@ class ProductsInactive {
               <div class='list-item__bottom'>
                 <div class='btn_lovely_remove'>
                 <button class='heart'></button>
-                <button class='trash'></button>
+                <button class='trash' onclick='removeFromCart('${id}')'></button>
                 </div>
               </div>
             </div>
           </div>
         </li>`)
-          : (htmlCatalog += `
-            <li key='${id}' class="productsInactive__item">
+        : (htmlCatalog += `
+            <li key="${id}" class="productsInactive__item">
                 <div class="item">
                     <div style='display: flex; justify-content:center; gap: 12px'>
                         <img src="${img}" class="productsInactive__item_img" />
@@ -60,18 +64,20 @@ class ProductsInactive {
                     <div style='display:flex; flex-direction:column; gap:8px; margin-left: 44px;'>
                         <div class='btn_lovely_remove '>
                             <button class='heart'></button>
-                            <button class='trash'></button>
+                            <button class='trash' onclick='removeFromCartIn("${id}")'></button>
                         </div>
                     </div>
                 </div>
           </li>
           `);
-      }
     });
 
     const html = `
-        <div class='productsInactive__title'>
-          <p class='caption-600'>Отсутствуют · 3 товара</p>
+        <div style="display: flex">
+          <div class='productsInactive__title'>
+            <p class='caption-600'>Отсутствуют · 3 товара</p>
+          </div>
+          <button class="item__accordeon" onclick="hideInactiveList()"><img id='accordeonIn' src="../img/icons/accord.png" /></button>
         </div>
         <div class="line"></div>
           <ul class='productsInactive__list'>
@@ -85,3 +91,15 @@ class ProductsInactive {
 
 const productsInactivePage = new ProductsInactive();
 productsInactivePage.render();
+
+function hideInactiveList() {
+  let list = document.querySelector(".productsInactive__list");
+  let arrow = document.getElementById("accordeonIn");
+  if (list.style.display === "none") {
+    list.style.display = "flex";
+    arrow.src = "../img/icons/accord.png";
+  } else {
+    list.style.display = "none";
+    arrow.src = "../img/icons/accordDown.png";
+  }
+}

@@ -1,4 +1,9 @@
 class Order {
+  constructor() {
+    // Регистрация слушателя события
+    mediaQuery.addEventListener("change", () => this.render());
+  }
+
   render() {
     let htmlOrder = `
         <div class='order'>
@@ -70,7 +75,7 @@ class Order {
                     <div class='payment-container'>
                         <div class='payment-method-container'>
                             <div class='item__checkbox_container'>
-                                <input type='checkbox' onchange="TotalPrice()" id="checkcard" class='item__checkbox' />
+                                <input type='checkbox' onchange="totalPrice()" id="checkcard" class='item__checkbox' />
                                 <label for='checkcard'></label>
                             </div>
                             <p  class='payment-description caption'>Списать оплату сразу</p>
@@ -93,10 +98,10 @@ class Order {
     }
     isCardChoose();
     isCardChooseDel();
-    TotalPrice();
-    TotalProducts();
-    TotalOldPrice();
-    TotalDiscount();
+    totalPrice();
+    totalProducts();
+    totalOldPrice();
+    totalDiscount();
   }
 }
 

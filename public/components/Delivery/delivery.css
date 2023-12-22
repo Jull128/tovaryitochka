@@ -118,7 +118,7 @@
 .Input-text {
   display: block;
   margin: 0;
-  padding: var(--inputPaddingV) var(--inputPaddingH);
+  padding: 0px 0px 0px 0px;
   color: inherit;
   width: 100%;
   border: none;
@@ -226,7 +226,7 @@
 
   .delivery__block {
     margin-bottom: 13px;
-    gap: 11px;
+    gap: 8px;
   }
 
   .delivery__container {
@@ -259,7 +259,7 @@
 
   .delivery_free {
     padding: 1px 8px;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
   }
 
   .delivery__section {
@@ -271,7 +271,7 @@
     padding-bottom: 24px;
   }
   .delivery__section:nth-child(3) {
-    padding-bottom: 12px;
+    padding-bottom: 8px;
   }
 
   .Input-label.caption {
@@ -281,12 +281,17 @@
     line-height: 14px;
   }
 
+  .Input-text {
+    height: 24px;
+    padding: 0px 0px 5px 0px;
+  }
+
   .form {
     margin-top: 13px;
-    gap: 18px;
+    gap: 16px;
   }
 
   .form_input_container {
-    height: 54px;
+    height: 56px;
   }
 }

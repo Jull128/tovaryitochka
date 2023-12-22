@@ -1,4 +1,9 @@
 class Products {
+  constructor() {
+    // Регистрация слушателя события
+    mediaQuery.addEventListener("change", () => this.render());
+  }
+
   render() {
     let htmlCatalog = "";
     const available = (availability, cart) => {
@@ -6,6 +11,7 @@ class Products {
         return true;
       }
     };
+
     basket?.forEach(
       ({
         id,
@@ -21,6 +27,7 @@ class Products {
         OGRN,
         adress,
       }) => {
+        console.log(id);
         mediaQuery.matches
           ? (htmlCatalog += `
           <li key='${id}' class="products__item">
@@ -66,9 +73,9 @@ class Products {
                 <div class="container__counter_price">
                   <div style='display:flex; flex-direction:column; gap:8px;'>
                     <div class='counter' data-counter>
-                    <button class="counter__btn-d" onclick='decrement(${id})'>−</button>
+                    <button class="counter__btn_d" onclick='decrement(${id})'>−</button>
                     <div class="counter__input caption-14" id='${id}'>${cart}</div>
-                    <button class="counter__btn-i" onclick='increment(${id})'>+</button>
+                    <button class="counter__btn_i" onclick='increment(${id})'>+</button>
                   </div>
                 </div>
                 <div class='list-item__bottom'>
@@ -79,8 +86,8 @@ class Products {
                       : ""
                   }
                   <div class='btn_lovely_remove'>
-                  <button class='heart'></button>
-                  <button class='trash'></button>
+                  <button class='heart' id='favor${id}' onclick='addToFavorite(${id})'></button>
+                  <button class='trash' onclick='removeFromCart("${id}")'></button>
                   </div>
                 </div>
               </div>
@@ -131,9 +138,13 @@ class Products {
             <div class="container__counter_price">
 <div style='display:flex; flex-direction:column; gap:8px;'>
               <div class='counter' data-counter>
-                <button class="counter__btn" onclick='decrement(${id})'>−</button>
+                <button class="counter__btn_d ${
+                  cart === 1 ? "count_disabled" : ""
+                }" onclick='decrement(${id})'>−</button>
                 <div class="counter__input caption-400" id='${id}'>${cart}</div>
-                <button class="counter__btn" onclick='increment(${id})'>+</button>
+                <button class="counter__btn_i ${
+                  availability - cart === 0 ? "count_disabled" : ""
+                }" onclick='increment(${id})'>+</button>
               </div>
               ${
                 available(availability, cart)
@@ -142,8 +153,8 @@ class Products {
                   : ""
               }
               <div class='btn_lovely_remove'>
-              <button class='heart'></button>
-              <button class='trash'></button>
+              <button class='heart' name="heart" id='favor${id}' onclick='addToFavorite(${id})'></button>
+              <button class='trash' onclick='removeFromCart("${id}")'></button>
               </div>
               </div>
               <div class='item__price'>
@@ -189,9 +200,14 @@ class Products {
     }
 
       <div class='item__checkboxAll_container'>
-        <input type='checkbox' onClick="toggle(this)" class="item__checkbox" id='checkAll' />
-        <label for='checkAll'></label>
-        <p class='caption-16'>Выбрать все</p>
+        <div class="item__checkboxAll_header">
+          <input type='checkbox' onClick="toggle(this)" class="item__checkbox" id='checkAll' />
+          <label for='checkAll'></label>
+          <p class='caption-16' style="
+          margin-top: -1px;
+      ">Выбрать все</p>
+        </div>
+        <button class="item__accordeon" onclick="hideList()"><img id='accordeon' src="../img/icons/accord.png" /></button>
       </div>
       ${mediaQuery.matches ? "" : `<div class="line"></div>`}
         <ul class='products__list'>
@@ -206,3 +222,78 @@ class Products {
 const productsPage = new Products();
 productsPage.render();
 isChecked();
+isFavorite();
+
+function hideList() {
+  let list = document.querySelector(".products__list");
+  let arrow = document.getElementById("accordeon");
+  if (list.style.display === "none") {
+    list.style.display = "flex";
+    arrow.src = "../img/icons/accord.png";
+    hideListAndCloseCount();
+  } else {
+    list.style.display = "none";
+    arrow.src = "../img/icons/accordDown.png";
+    hideListAndShowCount();
+  }
+}
+
+let quantityAllProducts = () => {
+  if (basket.length !== 0) {
+    let amount = basket
+      .map((x) => {
+        let { id } = x;
+        let search = basket.find((y) => y.id === id) || [];
+        return search.cart;
+      })
+      .reduce((x, y) => x + y, 0);
+
+    let price = basket
+      .map((x) => {
+        let { id } = x;
+        let search = basket.find((y) => y.id === id) || [];
+        return search.newPrice;
+      })
+      .reduce((x, y) => x + y, 0);
+
+    // склонение окончаний
+    let declOfNum = (n) => {
+      n = Math.abs(amount) % 100;
+      let n1 = n % 10;
+      if (n > 10 && n < 20) {
+        return "товаров";
+      }
+      if (n1 > 1 && n1 < 5) {
+        return "товара";
+      }
+      if (n1 == 1) {
+        return "товар";
+      }
+      return "товаров";
+    };
+
+    return `${amount} ${declOfNum(amount)} · ${Math.round(
+      amount * price
+    ).toLocaleString("ru")} сом`;
+  }
+};
+
+function hideListAndShowCount() {
+  let container = document.querySelector(".item__checkboxAll_header");
+
+  // Получаем количество товаров, здесь предполагается, что у вас уже есть эта информация
+  let itemCount = quantityAllProducts();
+
+  // Очищаем контейнер и устанавливаем новое содержимое
+  container.innerHTML = '<p class="caption-600">' + itemCount + "</p>";
+}
+
+function hideListAndCloseCount() {
+  let container = document.querySelector(".item__checkboxAll_header");
+  // Очищаем контейнер и устанавливаем новое содержимое
+  container.innerHTML = `<input type='checkbox' onClick="toggle(this)" class="item__checkbox" id='checkAll' />
+  <label for='checkAll'></label>
+  <p class='caption-16' style="
+  margin-top: -1px;
+">Выбрать все</p>`;
+}

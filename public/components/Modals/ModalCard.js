@@ -9,7 +9,7 @@ function openModalCard() {
   card.forEach(({ id, name, img, checked }) => {
     htmlCatalogCard += `
     <div class="modal__adress_line">
-    <label class="modal__adress_label">
+    <label class="modal__card_label">
        <input class='input__adress' name='checkAdr'  type='radio' id='${id}' />
        <span></span>
     </label>

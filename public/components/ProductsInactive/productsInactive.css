@@ -29,12 +29,17 @@
   color: var(--system-gray, #a0a0a4);
 }
 
+.productsInactive__title {
+  margin-top: -3px;
+}
+
 @media (max-width: 320px) {
   .productsInactive {
     padding: 0 16px;
   }
   .productsInactive__title {
-    margin-bottom: 16.5px;
+    margin-bottom: 18.5px;
+    margin-top: 1px;
   }
   .productsInactive__item_description {
     width: 100%;

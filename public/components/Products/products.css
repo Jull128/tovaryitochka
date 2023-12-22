@@ -14,6 +14,13 @@
   padding-top: 11px;
 }
 
+.item__checkboxAll_header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 11px;
+}
+
 .products__item {
   width: 100%;
   height: 100%;
@@ -28,6 +35,7 @@
   height: 1px;
   background-color: rgba(0, 0, 0, 0.1);
   margin-top: 16px;
+  margin-bottom: 2px;
 }
 
 .item__checkbox_container {
@@ -227,15 +235,14 @@
 }
 
 .counter {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  justify-content: space-between;
   width: 100px;
   height: 44px;
-  gap: 13px;
   border-radius: 8px;
   background: #fff;
   margin-top: 3px;
-  align-items: flex-end;
+  align-items: center;
   padding: 0 4px;
 }
 
@@ -243,6 +250,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top: 8px;
   padding-bottom: 13px;
 }
 
@@ -254,6 +262,37 @@
   font-weight: 400;
   line-height: 24px; /* 120% */
   padding-bottom: 12px;
+}
+
+.counter__btn_d,
+.counter__btn_i {
+  all: unset;
+  display: flex;
+  width: 9px;
+  height: 16px;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+  text-align: center;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  color: black;
+  line-height: 24px;
+  padding: 2px 7px 6px 8px;
+  letter-spacing: -0.2px;
+}
+
+.count_disabled {
+  color: rgba(0, 0, 0, 0.2);
+}
+
+.item__accordeon {
+  all: unset;
+  text-align: center;
+  margin-left: auto;
+  width: 20px;
+  height: 20px;
 }
 
 .item__price {
@@ -300,6 +339,7 @@
 }
 
 .heart,
+.heartActive,
 .trash {
   width: 20px;
   height: 20px;
@@ -310,21 +350,25 @@
 .heart {
   background: url(/img/icons/heart.svg) no-repeat;
 }
+.heartActive {
+  background: url(/img/icons/heartActive.svg) no-repeat;
+}
+
 .heart:hover {
-  background: url(/img/icons/heartActive.svg);
+  background: url(/img/icons/heartActive.svg) no-repeat;
 }
 .trash {
   background: url(/img/icons/trashcan.svg) no-repeat;
 }
 .trash:hover {
-  background: url(/img/icons/trashcanRed.svg);
+  background: url(/img/icons/trashcanRed.svg) no-repeat;
 }
 
 @media (max-width: 320px) {
   .btn_lovely_remove {
     gap: 24px;
-    padding-right: 4px;
-    padding-bottom: 2px;
+    padding-right: 12px;
+    padding-bottom: 0px;
     margin-left: auto;
   }
 
@@ -340,32 +384,24 @@
     gap: 0;
   }
 
-  .counter__btn-d {
-    border: none;
-    border-radius: 4px;
-    background-color: white;
-    height: 32px;
-    width: 24px;
-    padding: 4px 5px 8px 9px;
+  .counter__btn_d {
+    all: unset;
+    text-align: center;
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
     line-height: 24px; /* 120% */
-    letter-spacing: -0.2px;
+    padding: 4px 5px 8px 9px;
   }
 
-  .counter__btn-i {
-    border: none;
-    border-radius: 4px;
-    background-color: white;
-    height: 32px;
-    width: 24px;
-    padding: 4px 9px 8px 5px;
+  .counter__btn_i {
+    all: unset;
+    text-align: center;
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
     line-height: 24px; /* 120% */
-    letter-spacing: -0.2px;
+    padding: 4px 9px 8px 5px;
   }
 
   .container__counter_price {
@@ -387,9 +423,14 @@
     padding: 5px 0px 7.667px 0px;
   }
 
+  .item__accordeon {
+    margin-right: 4px;
+    padding-top: 1px;
+  }
+
   .item__checkboxAll_container {
-    margin-bottom: 16px;
-    margin-top: 10px;
+    margin-bottom: 18px;
+    margin-top: 8px;
   }
 
   .item__checkbox_container {
@@ -442,6 +483,7 @@
 
   .line {
     margin-top: 0;
+    margin-bottom: 0;
   }
 
   .list-item__bottom {
@@ -488,7 +530,7 @@
   }
 
   .products__list {
-    gap: 16px;
+    gap: 15px;
   }
 
   .size {

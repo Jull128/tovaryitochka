@@ -1,4 +1,9 @@
 class Header {
+  constructor() {
+    // Регистрация слушателя события
+    mediaQuery.addEventListener("change", () => this.render());
+  }
+
   render() {
     let html = "";
 
